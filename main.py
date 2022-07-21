@@ -17,7 +17,7 @@ async def on_ready():
     print(f'We have logged in as {bot.user}')
     channel = await bot.fetch_channel(996446872451432498)
     startupEmbed = nextcord.Embed(title="The bot has started!", description="Hi **Stones**! The bot has now started. Feel free to use `a.help` to see what I can do!",color=nextcord.Color.magenta())
-    startupEmbed.set_thumbnail(url=bot.user.avatar)
+    startupEmbed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
     await channel.send(embed=startupEmbed)
 
 @bot.command(aliases = ["av", "pfp"]) # Avatar command
@@ -38,7 +38,7 @@ async def on_member_join(member):
     embed = nextcord.Embed(title=f"Welcome to Dank Moon, {member}!",description=f"To get started in the server, read the rules in <#710840207808659517> and verify in <#741336727188144148>",color=nextcord.Color.magenta())
     embed.add_field(name="Once you have verified...",value="+ Get pings and other roles from <#711952053433401375>!\n+ Select your colour role in <#710847274988732507>!\n+ Chat with us in <#710573789309698060>!\n+ Our heists take place in <#711435197807067156>!\n+ See what we are giving away in <#711435312332537889> and <#809422611452919818>!")
     embed.set_footer(text="If you are here for a heist, don't freeload! We ban freeloaders :P")
-    embed.set_thumbnail(bot.user.avatar.url)
+    embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
     await member.send(embed=embed)
     rulesChan = bot.get_channel(710840207808659517)
     await rulesChan.send(f"{member.mention}",delete_after=1)
