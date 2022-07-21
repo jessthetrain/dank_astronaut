@@ -19,7 +19,7 @@ async def on_ready():
     startupEmbed.set_thumbnail(url=bot.user.avatar)
     await channel.send(embed=startupEmbed)
 
-@commands.command(aliases = ["av", "pfp"]) # Avatar command
+@bot.command(aliases = ["av", "pfp"]) # Avatar command
 async def avatar(ctx, user: nextcord.Member=None):
     if user == None:
         user = ctx.message.author
@@ -27,7 +27,7 @@ async def avatar(ctx, user: nextcord.Member=None):
     embed.set_image(url=str(user.avatar))
     await ctx.send(embed=embed)
 
-@commands.command() # Command to see the bot's ping in an embed
+@bot.command() # Command to see the bot's ping in an embed
 async def ping(ctx):
     embed = nextcord.Embed(title="Pong! 🏓", description=f"{round(bot.latency * 1000, 1)}ms", color=nextcord.Color.magenta())
     await ctx.reply(embed=embed)
