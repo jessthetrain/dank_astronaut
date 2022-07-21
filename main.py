@@ -22,7 +22,7 @@ class verifyButtons(nextcord.ui.View):
         guild = bot.get_guild(710573788856582225)
         verified = guild.get_role(741336292612243603)
         await interaction.user.add_roles(verified)
-        await interaction.response.send_message(ephemeral=True,content="You have been verfied successfully!")
+        await interaction.response.send_message(ephemeral=True,content="You have been verfied!")
         self.value = True
         self.stop
 
