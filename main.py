@@ -62,7 +62,7 @@ class verifyButtons(nextcord.ui.View):
 async def verification(ctx):
     embed = nextcord.Embed(title="Verification",description="Click the button below to get verified!",color=nextcord.Color.green())
     await ctx.channel.purge(limit=1)
-    await ctx.channel.purge(limit=1,check=lambda m:m.author==bot.user)
+    await ctx.channel.purge(limit=5,check=lambda m:m.author==bot.user)
     view = verifyButtons()
     await ctx.send(embed=embed,view=view)
     await view.wait()
