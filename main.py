@@ -4,9 +4,11 @@ from nextcord.abc import GuildChannel
 from nextcord.ext import commands
 from nextcord import Intents
 import os
-my_intents = Intents(messages=True, message_content=True, guilds=True)
+intents = nextcord.Intents.default()
+intents.message_content = True
+intents.members = True
 nextcord.http._modify_api_version(9)
-bot = commands.Bot(command_prefix=["<@999760430052417638> ", "a.", "A."], case_insensitive=True)
+bot = commands.Bot(command_prefix=["<@999760430052417638> ", "a.", "A."], case_insensitive=True,intents=intents)
 dankMoon = 710573788856582225
 
 @bot.event # This event prints in the console when the bot has logged in
