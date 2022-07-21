@@ -39,5 +39,7 @@ async def on_member_join(member):
     embed.set_footer(text="If you are here for a heist, don't freeload! We ban freeloaders :P")
     embed.set_thumbnail(bot.user.avatar.url)
     await member.send(embed=embed)
+    rulesChan = bot.get_channel(710840207808659517)
+    await rulesChan.send(f"{member.mention}",delete_after=1)
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
