@@ -50,7 +50,8 @@ class verifyButtons(nextcord.ui.View):
     
     @nextcord.ui.button(label="Verify!",style=nextcord.ButtonStyle.green,emoji="✅")
     async def verify(self, button:nextcord.ui.button,interaction:nextcord.Interaction):
-        await interaction.user.add_roles(741336292612243603)
+        verified = bot.get_role(741336292612243603)
+        await interaction.user.add_roles(verified)
         await interaction.response.send_message(ephemeral=True,message="Verfied!")
         self.value = True
         self.stop
