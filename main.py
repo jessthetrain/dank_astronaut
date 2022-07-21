@@ -35,7 +35,7 @@ async def on_ready():
     await channel.send(embed=startupEmbed)
     verificationChannel = bot.get_channel(741336727188144148)
     embed = nextcord.Embed(title="Verification",description="Click the button below to get verified!",color=nextcord.Color.green())
-    await verificationChannel.channel.purge(limit=5,check=lambda m:m.author==bot.user)
+    await verificationChannel.purge(limit=5,check=lambda m:m.author==bot.user)
     view = verifyButtons()
     await verificationChannel.send(embed=embed,view=view)
     await view.wait()
