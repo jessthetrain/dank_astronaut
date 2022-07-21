@@ -1,3 +1,4 @@
+from sre_constants import SUCCESS
 import nextcord
 from nextcord import Interaction, SlashOption, ChannelType
 from nextcord.abc import GuildChannel
@@ -41,5 +42,22 @@ async def on_member_join(member):
     await member.send(embed=embed)
     rulesChan = bot.get_channel(710840207808659517)
     await rulesChan.send(f"{member.mention}",delete_after=1)
+
+class buttons(nextcord.ui.View(timeout=0)):
+    def __init__(self):
+        super().__init__()
+        self.value=None
+    @nextcord.ui.button(label="Verify!",style=nextcord.ButtonStyle.success,emoji="✅")
+    async def verify(button:nextcord.ui.button,interaction:nextcord.ui.Interaction):
+        await interaction.user.add_roles(741336292612243603)
+
+@commands.has_role(805719483930771477)
+@bot.command()
+async def verification(ctx):
+    embed = nextcord.Embed(title="Verification",description="Click the button below to get verified!",color=nextcord.Color.green())
+    await ctx.channel.purge(limit=1)
+    view = buttons()
+    await ctx.send(embed=embed,view=view)
+    await view.wait()
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
