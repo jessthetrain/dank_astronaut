@@ -12,6 +12,20 @@ nextcord.http._modify_api_version(9)
 bot = commands.Bot(command_prefix=["<@999760430052417638> ", "a.", "A."], case_insensitive=True,intents=intents)
 dankMoon = 710573788856582225
 
+class verifyButtons(nextcord.ui.View):
+    def __init__(self):
+        super().__init__()
+        self.value=None
+    
+    @nextcord.ui.button(label="Verify!",style=nextcord.ButtonStyle.green,emoji="✅")
+    async def verify(self, button:nextcord.ui.button,interaction:nextcord.Interaction):
+        guild = bot.get_guild(710573788856582225)
+        verified = guild.get_role(741336292612243603)
+        await interaction.user.add_roles(verified)
+        await interaction.response.send_message(ephemeral=True,content="You have been verfied successfully!")
+        self.value = True
+        self.stop
+
 @bot.event # This event prints in the console when the bot has logged in
 async def on_ready():
     print(f'We have logged in as {bot.user}')
@@ -19,6 +33,21 @@ async def on_ready():
     startupEmbed = nextcord.Embed(title="The bot has started!", description="Hi **Stones**! The bot has now started. Feel free to use `a.help` to see what I can do!",color=nextcord.Color.magenta())
     startupEmbed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
     await channel.send(embed=startupEmbed)
+    verificationChannel = bot.get_channel(741336727188144148)
+    embed = nextcord.Embed(title="Verification",description="Click the button below to get verified!",color=nextcord.Color.green())
+    await verificationChannel.channel.purge(limit=5,check=lambda m:m.author==bot.user)
+    view = verifyButtons()
+    await verificationChannel.send(embed=embed,view=view)
+    await view.wait()
+
+@commands.has_role(805719483930771477)
+@bot.command()
+async def verification(ctx):
+    embed = nextcord.Embed(title="Verification",description="Click the button below to get verified!",color=nextcord.Color.green())
+    await ctx.channel.purge(limit=1)
+    view = verifyButtons()
+    await ctx.send(embed=embed,view=view)
+    await view.wait()
 
 @bot.command(aliases = ["av", "pfp"]) # Avatar command
 async def avatar(ctx, user: nextcord.Member=None):
@@ -42,29 +71,5 @@ async def on_member_join(member):
     await member.send(embed=embed)
     rulesChan = bot.get_channel(710840207808659517)
     await rulesChan.send(f"{member.mention}",delete_after=1)
-
-class verifyButtons(nextcord.ui.View):
-    def __init__(self):
-        super().__init__()
-        self.value=None
-    
-    @nextcord.ui.button(label="Verify!",style=nextcord.ButtonStyle.green,emoji="✅")
-    async def verify(self, button:nextcord.ui.button,interaction:nextcord.Interaction):
-        guild = bot.get_guild(710573788856582225)
-        verified = guild.get_role(741336292612243603)
-        await interaction.user.add_roles(verified)
-        await interaction.response.send_message(ephemeral=True,content="You have been verfied successfully!")
-        self.value = True
-        self.stop
-
-@commands.has_role(805719483930771477)
-@bot.command()
-async def verification(ctx):
-    embed = nextcord.Embed(title="Verification",description="Click the button below to get verified!",color=nextcord.Color.green())
-    await ctx.channel.purge(limit=1)
-    await ctx.channel.purge(limit=5,check=lambda m:m.author==bot.user)
-    view = verifyButtons()
-    await ctx.send(embed=embed,view=view)
-    await view.wait()
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
