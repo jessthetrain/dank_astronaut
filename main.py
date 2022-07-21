@@ -43,20 +43,24 @@ async def on_member_join(member):
     rulesChan = bot.get_channel(710840207808659517)
     await rulesChan.send(f"{member.mention}",delete_after=1)
 
-class buttons(nextcord.ui.View(timeout=0)):
+class verifyButtons(nextcord.ui.View):
     def __init__(self):
         super().__init__()
         self.value=None
-    @nextcord.ui.button(label="Verify!",style=nextcord.ButtonStyle.success,emoji="✅")
-    async def verify(button:nextcord.ui.button,interaction:nextcord.ui.Interaction):
+    
+    @nextcord.ui.button(label="Verify!",style=nextcord.ButtonStyle.green,emoji="✅")
+    async def verify(self, button:nextcord.ui.button,interaction:nextcord.Interaction):
         await interaction.user.add_roles(741336292612243603)
+        await interaction.response.send_message(ephemeral=True,message="Verfied!")
+        self.value = True
+        self.stop
 
 @commands.has_role(805719483930771477)
 @bot.command()
 async def verification(ctx):
     embed = nextcord.Embed(title="Verification",description="Click the button below to get verified!",color=nextcord.Color.green())
     await ctx.channel.purge(limit=1)
-    view = buttons()
+    view = verifyButtons()
     await ctx.send(embed=embed,view=view)
     await view.wait()
 
