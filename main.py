@@ -30,7 +30,6 @@ class verifyButtons(nextcord.ui.View):
             mentions = nextcord.AllowedMentions(everyone=False,users=True,roles=False)
             await general.send(f"Everyone welcome {interaction.user.mention} to the server!\nIf you are looking for a heist, it will probably be in <#711435197807067156> :slight_smile:",allowed_mentions=mentions,delete_after=120)
         self.value = True
-        self.stop()
 
 @bot.event # This event prints in the console when the bot has logged in
 async def on_ready():
