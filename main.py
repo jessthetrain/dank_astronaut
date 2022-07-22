@@ -78,4 +78,14 @@ async def on_member_join(member):
     rulesChan = bot.get_channel(710840207808659517)
     await rulesChan.send(f"{member.mention}",delete_after=1)
 
+@bot.command(alias=["i","whois"])
+async def info(ctx, member):
+    try:
+        user = bot.get_user(member)
+    except Exception as e:
+        await ctx.send(e)
+    else:
+        await ctx.send("blah blah blah")
+
+
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
