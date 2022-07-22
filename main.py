@@ -12,9 +12,9 @@ nextcord.http._modify_api_version(9)
 bot = commands.Bot(command_prefix=["<@999760430052417638> ", "a.", "A."], case_insensitive=True,intents=intents)
 dankMoon = 710573788856582225
 
-class verifyButtons(nextcord.ui.View(timeout=0)):
+class verifyButtons(nextcord.ui.View):
     def __init__(self):
-        super().__init__()
+        super().__init__(timeout=None)
         self.value=None
     
     @nextcord.ui.button(label="Verify!",style=nextcord.ButtonStyle.green,emoji="✅")
