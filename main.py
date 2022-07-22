@@ -12,7 +12,7 @@ nextcord.http._modify_api_version(9)
 bot = commands.Bot(command_prefix=["<@999760430052417638> ", "a.", "A."], case_insensitive=True,intents=intents)
 dankMoon = 710573788856582225
 
-class verifyButtons(nextcord.ui.View):
+class verifyButtons(nextcord.ui.View(timeout=None)):
     def __init__(self):
         super().__init__()
         self.value=None
@@ -80,15 +80,15 @@ async def on_member_join(member):
 
 @bot.command(aliases=["i","whois"])
 async def info(ctx, member=None):
-    if member == None:
-        user = ctx.message.author
-    else:
-        try:
-            user = bot.get_user(member)
-        except Exception as e:
-            await ctx.send(str(e))
+    try:
+        if member == None:
+            user  = ctx.author
         else:
-            await ctx.send("blah blah blah")
+            user = bot.get_user(member)
+    except Exception as e:
+        await ctx.send(str(e))
+    else:
+        await ctx.send("blah blah blah")
 
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
