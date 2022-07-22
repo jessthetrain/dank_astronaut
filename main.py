@@ -21,8 +21,14 @@ class verifyButtons(nextcord.ui.View):
     async def verify(self, button:nextcord.ui.button,interaction:nextcord.Interaction):
         guild = bot.get_guild(710573788856582225)
         verified = guild.get_role(741336292612243603)
-        await interaction.user.add_roles(verified)
-        await interaction.response.send_message(ephemeral=True,content="You have been verfied!")
+        if verified in interaction.user.roles:
+            await interaction.response.send_message(ephemeral=True,content="You are already verified...")
+        else:
+            await interaction.user.add_roles(verified)
+            await interaction.response.send_message(ephemeral=True,content="You have been verfied!")
+            general = bot.get_channel(710573789309698060)
+            mentions = nextcord.AllowedMentions(everyone=False,users=True,roles=False)
+            await general.send(f"Everyone welcome {interaction.user.mention} to the server!\nIf you are looking for a heist, it will probably be in <#711435197807067156> :slight_smile:",allowed_mentions=mentions)
         self.value = True
         self.stop
 
