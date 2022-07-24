@@ -5,6 +5,7 @@ from nextcord.abc import GuildChannel
 from nextcord.ext import commands
 from nextcord import Intents
 import os
+import datetime
 intents = nextcord.Intents.default()
 intents.message_content = True
 intents.members = True
@@ -102,7 +103,7 @@ async def whois(interaction:Interaction,user:nextcord.User=None):
     if user.banner != None:
         embed.set_image(str(user.banner.url))
     embed.set_footer(text=f"ID: {user.id}")
-    embed.add_field(name="Account Created",value=user.created_at)
+    embed.add_field(name="Account Created",value=f"{user.created_at.year}-{user.created_at.month}-{user.created_at.day} at {user.created_at.hour}:{user.created_at.minute}:{user.created_at.second} UTC{user.created_at.tzinfo}")
     await interaction.response.send_message(embed=embed)
 
 
