@@ -54,19 +54,11 @@ async def verification(ctx):
     await ctx.send(embed=embed,view=view)
     await view.wait()
 
-@bot.command(aliases = ["av", "avatar"]) # Avatar command
-async def pfp(ctx, user: nextcord.Member=None):
-    if user == None:
-        user = ctx.message.author
-    embed = nextcord.Embed(title=f"Avatar of {user}", color=nextcord.Color.random())
-    embed.set_image(url=str(user.avatar))
-    await ctx.send(embed=embed)
-
 @bot.slash_command(name="avatar",description="View a user's avatar",guild_ids=[dankMoon])
 async def avatar(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
-    embed = nextcord.Embed(title=f"Avatar of {user}", color=nextcord.Color.random())
+    embed = nextcord.Embed(title=f"Avatar of {user}", color=nextcord.Color.magenta())
     embed.set_image(url=str(user.avatar))
     await interaction.response.send_message(embed=embed)
 
@@ -96,6 +88,18 @@ async def info(ctx, member=None):
         await ctx.send(str(e))
     else:
         await ctx.send("blah blah blah")
+
+@bot.slash_command(name="whois",description="View cool information about a member",guild_ids=[dankMoon])
+async def whois(interaction:Interaction,user:nextcord.user=None):
+    if user == None:
+        user = interaction.user
+    embed = nextcord.Embed(color=nextcord.Color.magenta(),title=user.display_name)
+    embed.set_author(name=f"{user}",icon_url=str(user.avatar))
+    embed.set_thumbnail(str(user.display_avatar))
+    embed.set_image(str(user.banner))
+    embed.set_footer(text=f"ID: {user.id}")
+    embed.add_field(name="Account Created",value=user.created_at)
+    await interaction.response.send_message(embed=embed)
 
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
