@@ -94,9 +94,9 @@ async def whois(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
     embed = nextcord.Embed(color=nextcord.Color.magenta(),title=user.display_name)
-    embed.set_author(name=f"{user}",icon_url=str(user.avatar))
-    embed.set_thumbnail(str(user.display_avatar))
-    embed.set_image(str(user.banner))
+    embed.set_author(name=f"{user}",icon_url=str(user.avatar.url))
+    embed.set_thumbnail(str(user.display_avatar.url))
+    embed.set_image(str(user.banner.url))
     embed.set_footer(text=f"ID: {user.id}")
     embed.add_field(name="Account Created",value=user.created_at)
     await interaction.response.send_message(embed=embed)
