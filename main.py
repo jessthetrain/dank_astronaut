@@ -67,6 +67,11 @@ async def ping(ctx):
     embed = nextcord.Embed(title="Pong! 🏓", description=f"{round(bot.latency * 1000, 1)}ms", color=nextcord.Color.magenta())
     await ctx.reply(embed=embed)
 
+@bot.slash_command(name="ping",description="🏓 Shows the bot's latency",guild_ids=dankMoon)
+async def ping(interaction:Interaction):
+    embed = nextcord.Embed(title="Pong! 🏓",description=f"{round(bot.latency * 1000, 1)}ms",color=nextcord.Color.magenta())
+    await interaction.response.send_message(embed=embed)
+
 @bot.event
 async def on_member_join(member):
     embed = nextcord.Embed(title=f"Welcome to Dank Moon, {member}!",description=f"To get started in the server, read the rules in <#710840207808659517> and verify in <#741336727188144148>",color=nextcord.Color.magenta())
