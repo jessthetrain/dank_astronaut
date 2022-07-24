@@ -90,7 +90,7 @@ async def info(ctx, member=None):
         await ctx.send("blah blah blah")
 
 @bot.slash_command(name="whois",description="View cool information about a member",guild_ids=[dankMoon])
-async def whois(interaction:Interaction,user:nextcord.user=None):
+async def whois(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
     embed = nextcord.Embed(color=nextcord.Color.magenta(),title=user.display_name)
