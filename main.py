@@ -54,18 +54,19 @@ async def verification(ctx):
     await ctx.send(embed=embed,view=view)
     await view.wait()
 
-@bot.command(aliases = ["av", "pfp"]) # Avatar command
-async def avatar(ctx, user: nextcord.Member=None):
+@bot.command(aliases = ["av", "avatar"]) # Avatar command
+async def pfp(ctx, user: nextcord.Member=None):
     if user == None:
         user = ctx.message.author
     embed = nextcord.Embed(title=f"Avatar of {user}", color=nextcord.Color.random())
     embed.set_image(url=str(user.avatar))
     await ctx.send(embed=embed)
 
-@bot.command() # Command to see the bot's ping in an embed
-async def ping(ctx):
-    embed = nextcord.Embed(title="Pong! 🏓", description=f"{round(bot.latency * 1000, 1)}ms", color=nextcord.Color.magenta())
-    await ctx.reply(embed=embed)
+@bot.slash_command(name="avatar",description="View a user's avatar",guild_ids=[dankMoon])
+async def avatar(interaction:Interaction,user:nextcord.User=Interaction.user):
+    embed = nextcord.Embed(title=f"Avatar of {user}", color=nextcord.Color.random())
+    embed.set_image(url=str(user.avatar))
+    await interaction.response.send_message(embed=embed)
 
 @bot.slash_command(name="ping",description="🏓 Shows the bot's latency",guild_ids=[dankMoon])
 async def ping(interaction:Interaction):
