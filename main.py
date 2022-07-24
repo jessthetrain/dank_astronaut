@@ -67,7 +67,7 @@ async def ping(ctx):
     embed = nextcord.Embed(title="Pong! 🏓", description=f"{round(bot.latency * 1000, 1)}ms", color=nextcord.Color.magenta())
     await ctx.reply(embed=embed)
 
-@bot.slash_command(name="ping",description="🏓 Shows the bot's latency",guild_ids=dankMoon)
+@bot.slash_command(name="ping",description="🏓 Shows the bot's latency",guild_ids=[dankMoon])
 async def ping(interaction:Interaction):
     embed = nextcord.Embed(title="Pong! 🏓",description=f"{round(bot.latency * 1000, 1)}ms",color=nextcord.Color.magenta())
     await interaction.response.send_message(embed=embed)
