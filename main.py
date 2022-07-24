@@ -94,7 +94,10 @@ async def whois(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
     embed = nextcord.Embed(color=nextcord.Color.magenta(),title=user.display_name)
-    embed.set_author(name=f"{user}",icon_url=str(user.avatar.url))
+    if user.avatar != None:
+        embed.set_author(name=f"{user}",icon_url=str(user.avatar.url))
+    else:
+        embed.set_author(name=f"{user}",icon_url=str(user.default_avatar.url))
     embed.set_thumbnail(str(user.display_avatar.url))
     if user.banner != None:
         embed.set_image(str(user.banner.url))
