@@ -63,7 +63,9 @@ async def pfp(ctx, user: nextcord.Member=None):
     await ctx.send(embed=embed)
 
 @bot.slash_command(name="avatar",description="View a user's avatar",guild_ids=[dankMoon])
-async def avatar(interaction:Interaction,user:nextcord.User=Interaction.user):
+async def avatar(interaction:Interaction,user:nextcord.User=None):
+    if user == None:
+        user = interaction.user
     embed = nextcord.Embed(title=f"Avatar of {user}", color=nextcord.Color.random())
     embed.set_image(url=str(user.avatar))
     await interaction.response.send_message(embed=embed)
