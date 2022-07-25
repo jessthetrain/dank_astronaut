@@ -5,6 +5,8 @@ from nextcord.abc import GuildChannel
 from nextcord.ext import commands
 from nextcord import Intents
 import os
+import time
+import calendar
 import datetime
 intents = nextcord.Intents.default()
 intents.message_content = True
@@ -59,7 +61,7 @@ async def verification(ctx):
 async def avatar(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
-    embed = nextcord.Embed(title=f"Avatar of {user}", color=user.accent_color)
+    embed = nextcord.Embed(title=f"Avatar of {user}", color=nextcord.Color.magenta())
     if user.avatar != None:
         embed.set_image(url=str(user.avatar))
     else:
@@ -110,7 +112,7 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
     if member.banner != None:
         embed.set_image(member.banner.url)
     embed.set_footer(text=f"ID: {member.id}")
-    embed.add_field(name="Account Created",value=f"{member.created_at.year}-{member.created_at.month}-{member.created_at.day} at {member.created_at.hour}:{member.created_at.minute}:{member.created_at.second} {member.created_at.tzinfo}")
+    embed.add_field(name="Account Created",value=f"{member.created_at.year}-{member.created_at.month}-{member.created_at.day} at {member.created_at.hour}:{member.created_at.minute}:{member.created_at.second} {member.created_at.tzinfo}\n<t:{calendar.timegm(member.created_at)}:R>")
     embed.add_field(name="Joined Server",value=f"{member.joined_at.year}-{member.joined_at.month}-{member.joined_at.day} at {member.joined_at.hour}:{member.joined_at.minute}:{member.joined_at.second} {member.joined_at.tzinfo}")
     embed.add_field(name="Is a bot?",value=str(member.bot))
     await interaction.response.send_message(embed=embed)
