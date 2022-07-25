@@ -90,8 +90,8 @@ async def info(ctx, member=None):
     else:
         await ctx.send("blah blah blah")
 
-@bot.slash_command(name="whois",description="View cool information about a member",guild_ids=[dankMoon])
-async def whois(interaction:Interaction,user:nextcord.User=None):
+@bot.slash_command(name="userinfo",description="View cool information about a Discord user",guild_ids=[dankMoon])
+async def userinfo(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
     embed = nextcord.Embed(color=nextcord.Color.magenta(),title=user.display_name)
@@ -103,7 +103,24 @@ async def whois(interaction:Interaction,user:nextcord.User=None):
     if user.banner != None:
         embed.set_image(str(user.banner.url))
     embed.set_footer(text=f"ID: {user.id}")
-    embed.add_field(name="Account Created",value=f"{user.created_at.year}-{user.created_at.month}-{user.created_at.day} at {user.created_at.hour}:{user.created_at.minute}:{user.created_at.second} UTC{user.created_at.tzinfo}")
+    embed.add_field(name="Account Created",value=f"{user.created_at.year}-{user.created_at.month}-{user.created_at.day} at {user.created_at.hour}:{user.created_at.minute}:{user.created_at.second} {user.created_at.tzinfo}")
+    await interaction.response.send_message(embed=embed)
+
+@bot.slash_command(name="whois",description="View cool information about another member of the server",guild_ids=[dankMoon])
+async def whois(interaction:Interaction,member:nextcord.Member=None):
+    if member == None:
+        member = interaction.user
+    embed = nextcord.Embed(color=member.top_role.color,title=member.display_name)
+    if member.avatar != None:
+        embed.set_author(name=member,icon_url=member.avatar.url)
+    else:
+        embed.set_author(name=member,icon_url=member.default_avatar.url)
+    embed.set_thumbnail(member.display_avatar.url)
+    if member.banner != None:
+        embed.set_image(member.banner.url)
+    embed.set_footer(text=f"ID: {member.id}")
+    embed.add_field(name="Account Created",value=f"{member.created_at.year}-{member.created_at.month}-{member.created_at.day} at {member.created_at.hour}:{member.created_at.minute}:{member.created_at.second} {member.created_at.tzinfo}")
+    embed.add_field(name="Joined Server",value=f"{member.joined_at.year}-{member.joined_at.month}-{member.joined_at.day} at {member.joined_at.hour}:{member.joined_at.minute}:{member.joined_at.second} {member.joined_at.tzinfo}")
     await interaction.response.send_message(embed=embed)
 
 
