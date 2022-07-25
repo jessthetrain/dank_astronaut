@@ -104,7 +104,7 @@ async def userinfo(interaction:Interaction,user:nextcord.User=None):
 async def whois(interaction:Interaction,member:nextcord.Member=None):
     if member == None:
         member = interaction.user
-    embed = nextcord.Embed(color=member.top_role.color,title=member.display_name)
+    embed = nextcord.Embed(color=nextcord.Color.magenta(),title=member.display_name)
     if member.avatar != None:
         embed.set_author(name=member,icon_url=member.avatar.url)
     else:
@@ -123,7 +123,6 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
         embed.add_field(name="Roles",value=userroles,inline=False)
     else:
         embed.add_field(name="Roles",value=f"{str(len(member.roles))}: (Too many to list)",inline=False)
-    embed.add_field(name="User permissions",value=str(member.guild_permissions),inline=True)
     await interaction.response.send_message(embed=embed)
 
 
