@@ -1,4 +1,5 @@
 from sre_constants import SUCCESS
+from discord import AllowedMentions
 import nextcord
 from nextcord import Interaction, SlashOption, ChannelType
 from nextcord.abc import GuildChannel
@@ -122,7 +123,7 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
 @bot.command()
 async def roles(ctx):
     mentions = nextcord.AllowedMentions(roles=False,everyone=False)
-    await ctx.send(str(ctx.author.roles[0]))
+    await ctx.send(str(ctx.author.roles[0]),AllowedMentions=mentions)
 
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
