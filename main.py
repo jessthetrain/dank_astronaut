@@ -118,7 +118,7 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
     embed.add_field(name="Is a bot?",value=str(member.bot))
     if len(member.roles) <= 40:
         userroles = f"{str(len(member.roles))}: "
-        for role in member.roles.reverse():
+        for role in member.roles:
             userroles = f"{userroles}<@&{role.id}>, "
         embed.add_field(name="Roles",value=userroles,inline=False)
     else:
