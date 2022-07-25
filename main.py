@@ -115,6 +115,7 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
     embed.add_field(name="Account Created",value=f"{member.created_at.year}-{member.created_at.month}-{member.created_at.day} at {member.created_at.hour}:{member.created_at.minute}:{member.created_at.second} {member.created_at.tzinfo}\n<t:{calendar.timegm([member.created_at.year,member.created_at.month,member.created_at.day,member.created_at.hour,member.created_at.minute,member.created_at.second])}:R>")
     embed.add_field(name="Joined Server",value=f"{member.joined_at.year}-{member.joined_at.month}-{member.joined_at.day} at {member.joined_at.hour}:{member.joined_at.minute}:{member.joined_at.second} {member.joined_at.tzinfo}\n<t:{calendar.timegm([member.joined_at.year,member.joined_at.month,member.joined_at.day,member.joined_at.hour,member.joined_at.minute,member.joined_at.second])}:R>")
     embed.add_field(name="Is a bot?",value=str(member.bot))
+    embed.add_field(name="Roles",value=f"{str(len(member.roles))}: {str(member.roles)}")
     await interaction.response.send_message(embed=embed)
 
 
