@@ -59,7 +59,7 @@ async def verification(ctx):
 async def avatar(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
-    embed = nextcord.Embed(title=f"Avatar of {user}", color=nextcord.Color.magenta())
+    embed = nextcord.Embed(title=f"Avatar of {user}", color=user.accent_color)
     if user.avatar != None:
         embed.set_image(url=str(user.avatar))
     else:
