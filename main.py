@@ -117,7 +117,10 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
     embed.add_field(name="Joined Server",value=f"{member.joined_at.year}-{member.joined_at.month}-{member.joined_at.day} at {member.joined_at.hour}:{member.joined_at.minute}:{member.joined_at.second} {member.joined_at.tzinfo}\n<t:{calendar.timegm([member.joined_at.year,member.joined_at.month,member.joined_at.day,member.joined_at.hour,member.joined_at.minute,member.joined_at.second])}:R>")
     embed.add_field(name="Is a bot?",value=str(member.bot))
     if len(member.roles) <= 40:
-        embed.add_field(name="Roles",value=f"{str(len(member.roles))}: {str(member.roles)}",inline=False)
+        userroles = []
+        for role in member.roles:
+            userroles.append(role.mention)
+        embed.add_field(name="Roles",value=f"{str(len(member.roles))}: {str(userroles)}",inline=False)
     else:
         embed.add_field(name="Roles",value=f"{str(len(member.roles))}: (Too many to list)",inline=False)
     embed.add_field(name="User permissions",value=str(member.guild_permissions),inline=True)
