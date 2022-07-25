@@ -121,6 +121,7 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
 @commands.is_owner()
 @bot.command()
 async def roles(ctx):
+    mentions = nextcord.AllowedMentions(roles=False,everyone=False)
     await ctx.send(str(ctx.author.roles[0]))
 
 
