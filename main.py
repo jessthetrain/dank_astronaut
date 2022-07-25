@@ -60,7 +60,10 @@ async def avatar(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
     embed = nextcord.Embed(title=f"Avatar of {user}", color=nextcord.Color.magenta())
-    embed.set_image(url=str(user.avatar))
+    if user.avatar != None:
+        embed.set_image(url=str(user.avatar))
+    else:
+        embed.set_image(url=user.default_avatar)
     await interaction.response.send_message(embed=embed)
 
 @bot.slash_command(name="ping",description="🏓 Shows the bot's latency",guild_ids=[dankMoon])
@@ -77,18 +80,6 @@ async def on_member_join(member):
     await member.send(embed=embed)
     rulesChan = bot.get_channel(710840207808659517)
     await rulesChan.send(f"{member.mention}",delete_after=1)
-
-@bot.command(aliases=["i","whois"])
-async def info(ctx, member=None):
-    try:
-        if member == None:
-            user  = ctx.author
-        else:
-            user = bot.get_user(member)
-    except Exception as e:
-        await ctx.send(str(e))
-    else:
-        await ctx.send("blah blah blah")
 
 @bot.slash_command(name="userinfo",description="View cool information about a Discord user",guild_ids=[dankMoon])
 async def userinfo(interaction:Interaction,user:nextcord.User=None):
