@@ -116,14 +116,11 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
     embed.add_field(name="Account Created",value=f"{member.created_at.year}-{member.created_at.month}-{member.created_at.day} at {member.created_at.hour}:{member.created_at.minute}:{member.created_at.second} {member.created_at.tzinfo}\n<t:{calendar.timegm([member.created_at.year,member.created_at.month,member.created_at.day,member.created_at.hour,member.created_at.minute,member.created_at.second])}:R>")
     embed.add_field(name="Joined Server",value=f"{member.joined_at.year}-{member.joined_at.month}-{member.joined_at.day} at {member.joined_at.hour}:{member.joined_at.minute}:{member.joined_at.second} {member.joined_at.tzinfo}\n<t:{calendar.timegm([member.joined_at.year,member.joined_at.month,member.joined_at.day,member.joined_at.hour,member.joined_at.minute,member.joined_at.second])}:R>")
     embed.add_field(name="Is a bot?",value=str(member.bot))
-    embed.add_field(name="Roles",value=f"{str(len(member.roles))}: {str(member.roles)}",inline=False)
+    if len(member.roles) <= 40:
+        embed.add_field(name="Roles",value=f"{str(len(member.roles))}: {str(member.roles)}",inline=False)
+    else:
+        embed.add_field(name="Roles",value=f"{str(len(member.roles))}: (Too many to list)")
     await interaction.response.send_message(embed=embed)
-
-@commands.is_owner()
-@bot.command()
-async def roles(ctx):
-    mentions = nextcord.AllowedMentions(roles=False,everyone=False)
-    await ctx.send(str(ctx.author.roles[0]),AllowedMentions=mentions)
 
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
