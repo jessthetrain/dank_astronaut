@@ -121,7 +121,7 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
 @commands.is_owner()
 @bot.command()
 async def roles(ctx):
-    await ctx.send(str(ctx.author.roles))
+    await ctx.send(str(ctx.author.roles[0]))
 
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
