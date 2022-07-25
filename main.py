@@ -119,7 +119,8 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
     if len(member.roles) <= 40:
         embed.add_field(name="Roles",value=f"{str(len(member.roles))}: {str(member.roles)}",inline=False)
     else:
-        embed.add_field(name="Roles",value=f"{str(len(member.roles))}: (Too many to list)")
+        embed.add_field(name="Roles",value=f"{str(len(member.roles))}: (Too many to list)",inline=False)
+    embed.add_field(name="User permissions",value=str(member.guild_permissions),inline=True)
     await interaction.response.send_message(embed=embed)
 
 
