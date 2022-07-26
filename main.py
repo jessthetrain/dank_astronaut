@@ -1,10 +1,9 @@
 from sre_constants import SUCCESS
 from discord import AllowedMentions
 import nextcord
-from nextcord import Interaction, SlashOption, ChannelType
+from nextcord import Interaction, SlashOption, ChannelType, Intents
 from nextcord.abc import GuildChannel
 from nextcord.ext import commands
-from nextcord import Intents
 import os
 import time
 import calendar
@@ -58,7 +57,7 @@ async def verification(ctx):
     await ctx.send(embed=embed,view=view)
     await view.wait()
 
-@bot.slash_command(name="avatar",description="View a user's avatar",guild_ids=[dankMoon])
+@bot.slash_command(name="avatar",description="View a user's avatar",guild_ids=[dankMoon],force_global=True)
 async def avatar(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
@@ -69,7 +68,7 @@ async def avatar(interaction:Interaction,user:nextcord.User=None):
         embed.set_image(url=user.default_avatar)
     await interaction.response.send_message(embed=embed)
 
-@bot.slash_command(name="ping",description="🏓 Shows the bot's latency",guild_ids=[dankMoon])
+@bot.slash_command(name="ping",description="🏓 Shows the bot's latency",guild_ids=[dankMoon],force_global=True)
 async def ping(interaction:Interaction):
     embed = nextcord.Embed(title="Pong! 🏓",description=f"{round(bot.latency * 1000, 1)}ms",color=nextcord.Color.magenta())
     await interaction.response.send_message(embed=embed)
@@ -84,7 +83,7 @@ async def on_member_join(member):
     rulesChan = bot.get_channel(710840207808659517)
     await rulesChan.send(f"{member.mention}",delete_after=1)
 
-@bot.slash_command(name="userinfo",description="View cool information about a Discord user",guild_ids=[dankMoon])
+@bot.slash_command(name="userinfo",description="View cool information about a Discord user",guild_ids=[dankMoon],force_global=True)
 async def userinfo(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
@@ -100,7 +99,7 @@ async def userinfo(interaction:Interaction,user:nextcord.User=None):
     embed.add_field(name="Account Created",value=f"{user.created_at.year}-{user.created_at.month}-{user.created_at.day} at {user.created_at.hour}:{user.created_at.minute}:{user.created_at.second} {user.created_at.tzinfo}")
     await interaction.response.send_message(embed=embed)
 
-@bot.slash_command(name="whois",description="View cool information about another member of the server",guild_ids=[dankMoon])
+@bot.slash_command(name="whois",description="View cool information about another member of the server",guild_ids=[dankMoon],force_global=True)
 async def whois(interaction:Interaction,member:nextcord.Member=None):
     if member == None:
         member = interaction.user
@@ -124,6 +123,8 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
     else:
         embed.add_field(name="Roles",value=f"{str(len(member.roles))}: (Too many to list)",inline=False)
     await interaction.response.send_message(embed=embed)
+
+
 
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
