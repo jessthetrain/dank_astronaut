@@ -128,7 +128,7 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
 async def giveaway(interaction:Interaction):
     pass
 
-@giveaway.subcommand(name="donate",description="Donate to a Dank Memer Giveaway!",guild_ids=[dankMoon])
+@giveaway.subcommand(name="donate",description="Donate to a Dank Memer Giveaway!")
 async def donate(interaction:Interaction, duration:str=SlashOption(
     name="duration",
     description="How long do you want the giveaway to last?",
