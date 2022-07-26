@@ -193,7 +193,7 @@ async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
         elif message==None:
             embed = nextcord.Embed(
                 title="🎉 Giveaway! 🎉",
-                description=f"<:pink_arrow_right:1001505500296396890> **Donator:** {donor}\n\n<:pink_arrow_right:1001505500296396890> Thank the donor in <#710573789309698060>",
+                description=f"<:pink_arrow_right:1001505500296396890> **Donator:** {donor.mention}\n\n<:pink_arrow_right:1001505500296396890> Thank the donor in <#710573789309698060>",
                 color=nextcord.Color.magenta()
             )
             embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
@@ -202,7 +202,7 @@ async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
         else:
             embed = nextcord.Embed(
                 title="🎉 Giveaway! 🎉",
-                description=f"<:pink_arrow_right:1001505500296396890> **Donator:** {donor}\n<:pink_arrow_right:1001505500296396890> **Message:** {message}\n\n<:pink_arrow_right:1001505500296396890> Thank the donor in <#710573789309698060>",
+                description=f"<:pink_arrow_right:1001505500296396890> **Donator:** {donor.mention}\n<:pink_arrow_right:1001505500296396890> **Message:** {message}\n\n<:pink_arrow_right:1001505500296396890> Thank the donor in <#710573789309698060>",
                 color=nextcord.Color.magenta()
             )
             embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
