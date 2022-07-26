@@ -179,7 +179,8 @@ async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
     if gman in interaction.user.roles:
         channel = interaction.channel
         if donor==None and message==None:
-            await channel.send(content="<@&711954068578500638>")
+            await channel.send(content="<@&711954068578500638> Thank the donor in <#710573789309698060>")
+            await interaction.response.send_message(content="✅",ephemeral=True)
         elif donor==None:
             embed = nextcord.Embed(
                 title="🎉 Giveaway! 🎉",
