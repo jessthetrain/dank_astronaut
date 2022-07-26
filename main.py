@@ -162,8 +162,8 @@ async def donate(interaction:Interaction, duration:str=SlashOption(
     embed.set_image("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
     embed.set_author(name=interaction.user,icon_url=interaction.user.display_avatar)
     donationChannel = bot.get_channel(741054074740539413)
-    interaction.response.send_message(content="✅ <#741054074740539413>",ephemeral=True)
-    donationChannel.send(content="<@&766651025364746260>",embed=embed)
+    await interaction.response.send_message(content="✅ <#741054074740539413>",ephemeral=True)
+    await donationChannel.send(content="<@&766651025364746260>",embed=embed)
 
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
