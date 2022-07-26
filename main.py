@@ -124,6 +124,10 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
         embed.add_field(name="Roles",value=f"{str(len(member.roles))}: (Too many to list)",inline=False)
     await interaction.response.send_message(embed=embed)
 
+@bot.slash_command(name="giveaway",guild_ids=[dankMoon])
+async def giveaway(interaction:Interaction):
+    pass
+
 
 
 
