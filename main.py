@@ -128,7 +128,42 @@ async def whois(interaction:Interaction,member:nextcord.Member=None):
 async def giveaway(interaction:Interaction):
     pass
 
-
+@giveaway.subcommand(name="donate",description="Donate to a Dank Memer Giveaway!",guild_ids=[dankMoon])
+async def donate(interaction:Interaction, duration:str=SlashOption(
+    name="duration",
+    description="How long do you want the giveaway to last?",
+    required=True
+), winners:int=SlashOption(
+    name="winners",
+    description="How many winners should the bot choose?",
+    required=True,
+    min_value=1,
+    max_value=10
+), prize:str=SlashOption(
+    name="prize",
+    description="What are you giving away?",
+    required=True
+), requirements:str=SlashOption(
+    name="requirements",
+    description="Do you want to add a requirement for people to enter the giveaway?",
+    required=False,
+    default="None"
+), message:str=SlashOption(
+    name="message",
+    description="Would you like to add a message to your giveaway?",
+    required=False,
+    default="None"
+)):
+    embed = nextcord.Embed(
+        title="🎉 Giveaway Donation! 🎉",
+        description=f"<:pink_arrow_right:1001505500296396890> **Time** <:purple_arrow_right:1001506139109863576> {duration}\n<:pink_arrow_right:1001505500296396890> **Winners** <:purple_arrow_right:1001506139109863576> {winners}\n<:pink_arrow_right:1001505500296396890> **Requirements** <:purple_arrow_right:1001506139109863576> {requirements}\n<:pink_arrow_right:1001505500296396890> **Prize** <:purple_arrow_right:1001506139109863576> {prize}\n<:pink_arrow_right:1001505500296396890> **Message** <:purple_arrow_right:1001506139109863576> {message}\n\n<:pink_arrow_right:1001505500296396890> Donated by {interaction.user.mention}",
+        color=nextcord.Color.magenta()
+    )
+    embed.set_image("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
+    embed.set_author(name=interaction.user,icon_url=interaction.user.display_avatar)
+    donationChannel = bot.get_channel(741054074740539413)
+    interaction.response.send_message(content="✅ <#741054074740539413>",ephemeral=True)
+    donationChannel.send(content="<@&766651025364746260>",embed=embed)
 
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
