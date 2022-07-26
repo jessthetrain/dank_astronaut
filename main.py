@@ -179,7 +179,7 @@ async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
     if gman in interaction.user.roles:
         channel = interaction.channel
         if donor==None and message==None:
-            channel.send(content="<@&711954068578500638>")
+            await channel.send(content="<@&711954068578500638>")
         elif donor==None:
             embed = nextcord.Embed(
                 title="🎉 Giveaway! 🎉",
@@ -188,7 +188,7 @@ async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
             )
             embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
             await interaction.response.send_message(content="✅",ephemeral=True)
-            channel.send(content="<@&711954068578500638>",embed=embed)
+            await channel.send(content="<@&711954068578500638>",embed=embed)
         elif message==None:
             embed = nextcord.Embed(
                 title="🎉 Giveaway! 🎉",
@@ -197,7 +197,7 @@ async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
             )
             embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
             await interaction.response.send_message(content="✅",ephemeral=True)
-            channel.send(content="<@&711954068578500638>",embed=embed)
+            await channel.send(content="<@&711954068578500638>",embed=embed)
         else:
             embed = nextcord.Embed(
                 title="🎉 Giveaway! 🎉",
@@ -206,7 +206,7 @@ async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
             )
             embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
             await interaction.response.send_message(content="✅",ephemeral=True)
-            channel.send(content="<@&711954068578500638>",embed=embed)
+            await channel.send(content="<@&711954068578500638>",embed=embed)
     else:
         await interaction.response.send_message(content="❌ You are not a giveaway manager",ephemeral=True)
 
