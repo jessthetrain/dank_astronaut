@@ -38,6 +38,7 @@ class verifyButtons(nextcord.ui.View):
 @bot.event # This event prints in the console when the bot has logged in
 async def on_ready():
     print(f'We have logged in as {bot.user}')
+    await bot.change_presence(activity=nextcord.Game(name=".gg/dPgEcaE4TM"),status=nextcord.Status.idle)
     channel = await bot.fetch_channel(996446872451432498)
     startupEmbed = nextcord.Embed(title="The bot has started!", description="Hi **Stones**! The bot has now started. Feel free to use `a.help` to see what I can do!",color=nextcord.Color.magenta())
     startupEmbed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
@@ -48,7 +49,6 @@ async def on_ready():
     view = verifyButtons()
     await verificationChannel.send(embed=embed,view=view)
     await view.wait()
-    await bot.change_presence(activity=nextcord.Game(name=".gg/dPgEcaE4TM"),status=nextcord.Status.idle)
 
 @commands.has_role(805719483930771477)
 @bot.command()
