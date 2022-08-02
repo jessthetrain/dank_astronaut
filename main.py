@@ -48,6 +48,7 @@ async def on_ready():
     view = verifyButtons()
     await verificationChannel.send(embed=embed,view=view)
     await view.wait()
+    await bot.change_presence(activity=nextcord.Game(name=".gg/dPgEcaE4TM"),status=nextcord.Status.idle)
 
 @commands.has_role(805719483930771477)
 @bot.command()
