@@ -11,6 +11,7 @@ import datetime
 intents = nextcord.Intents.default()
 intents.message_content = True
 intents.members = True
+intents.bans = True
 nextcord.http._modify_api_version(9)
 bot = commands.Bot(command_prefix=["<@999760430052417638> ", "a.", "A."], case_insensitive=True,intents=intents)
 dankMoon = 710573788856582225
@@ -210,6 +211,15 @@ async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
             await channel.send(content="<@&711954068578500638>",embed=embed)
     else:
         await interaction.response.send_message(content="❌ You are not a giveaway manager",ephemeral=True)
+
+@bot.event()
+async def on_member_ban(guild, user):
+    if guild == bot.get_guild(710573788856582225):
+        embed = nextcord.Embed(title=f"{user} broke the rules and got banned... imagine",color=nextcord.Color.magenta())
+        embed.set_thumbnail("https://cdn.discordapp.com/attachments/710864896153354301/1003965509299077140/712072450900230144.png")
+        embed.set_image("https://cdn.discordapp.com/attachments/710864896153354301/1003845313842401350/unknown.jpeg")
+        general = bot.get_channel(710573789309698060)
+        await general.send(embed=embed)
 
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
