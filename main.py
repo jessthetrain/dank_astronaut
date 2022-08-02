@@ -216,7 +216,7 @@ async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
 async def on_member_ban(guild, user):
     if guild == bot.get_guild(710573788856582225):
         embed = nextcord.Embed(title=f"{user} broke the rules and got banned... imagine",color=nextcord.Color.magenta())
-        embed.set_thumbnail("https://cdn.discordapp.com/attachments/710864896153354301/1003965509299077140/712072450900230144.png")
+        # embed.set_thumbnail("https://cdn.discordapp.com/attachments/710864896153354301/1003965509299077140/712072450900230144.png")
         embed.set_image("https://cdn.discordapp.com/attachments/710864896153354301/1003845313842401350/unknown.jpeg")
         general = bot.get_channel(710573789309698060)
         await general.send(embed=embed)
