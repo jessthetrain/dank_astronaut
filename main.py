@@ -212,7 +212,7 @@ async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
     else:
         await interaction.response.send_message(content="❌ You are not a giveaway manager",ephemeral=True)
 
-@bot.event()
+@bot.event
 async def on_member_ban(guild, user):
     if guild == bot.get_guild(710573788856582225):
         embed = nextcord.Embed(title=f"{user} broke the rules and got banned... imagine",color=nextcord.Color.magenta())
