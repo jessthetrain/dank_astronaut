@@ -280,6 +280,26 @@ async def hping(interaction:Interaction,amount:int=SlashOption(
     else:
         await interaction.response.send_message(content="❌ You are not a heist manager",ephemeral=True)
 
+@bot.slash_command(name="freeloader",guild_ids=[dankMoon])
+async def freeloader(interaction:Interaction):
+    pass
+
+@freeloader.subcommand(name="perks")
+async def freeloaderperks(interaction:Interaction):
+    channel = interaction.channel
+    embed = nextcord.Embed(title="🔨 Don't freeload! 🔨",description="Freeloading will result in your account being banned, and nobody wants that...",colour=nextcord.Color.magenta())
+    embed.set_footer("Dank Moon")
+    embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
+    await channel.send(embed=embed)
+
+@freeloader.subcommand(name="catch")
+async def catchfreeloader(interaction:Interaction,freeloader:nextcord.User=SlashOption(name="freeloader",description="Who did you catch freeloading?",required=True)):
+    if nextcord.Permissions.ban_members in interaction.user.guild_permissions:
+        await interaction.guild.ban(user=freeloader,reason=f"Got caught freeloading by {interaction.user}... imagine")
+        await interaction.response.send_message(content=f"Banned {freeloader} for freeloading",ephemeral=True)
+    else:
+        await interaction.response.send_message(content="❌ You cannot ban members",ephemeral=True)
+
 @bot.event
 async def on_member_ban(guild, user):
     if guild == bot.get_guild(710573788856582225):
