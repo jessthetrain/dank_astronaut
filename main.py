@@ -244,6 +244,41 @@ async def hdonate(interaction:Interaction, amount:int=SlashOption(
     await interaction.response.send_message(content="✅ <#741054074740539413>",ephemeral=True)
     await donationChannel.send(content="<@&715270049350549524>",embed=embed)
 
+@heist.subcommand(name="ping", description="Ping the giveaway ping role (For staff)")
+async def hping(interaction:Interaction,amount:int=SlashOption(
+    name="amount",
+    description="How much is the heist?",
+    required=True
+),donor=SlashOption(
+    name="donator",
+    description="Who donated to the heist?",
+    required=False,
+    default="None"
+), message:str=SlashOption(
+    name="message",
+    description="Message for the heist",
+    required=False,
+    default="None"
+), requirement:str=SlashOption(
+    name="requirement",
+    description="Is there a requirement to join this heist?",
+    required=False,
+    default="None"
+)):
+    hman = interaction.guild.get_role(715270049350549524)
+    if hman in interaction.user.roles:
+        channel = interaction.channel
+        embed = nextcord.Embed(
+            title="💸 Friendly Heist! 💸",
+            description=f"<:pink_arrow_right:1001505500296396890> **Amount:** {amount}\n<:pink_arrow_right:1001505500296396890> **Donator:** {donor}\n<:pink_arrow_right:1001505500296396890> **Message:** {message}\n<:pink_arrow_right:1001505500296396890> **Requirement:** {requirement}\n\n<:pink_arrow_right:1001505500296396890> Thank the donor in <#710573789309698060>",
+            color=nextcord.Color.magenta()
+        )
+        embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
+        await interaction.response.send_message(content="✅",ephemeral=True)
+        await channel.send(content="<@&711954189974241337>",embed=embed)
+    else:
+        await interaction.response.send_message(content="❌ You are not a heist manager",ephemeral=True)
+
 @bot.event
 async def on_member_ban(guild, user):
     if guild == bot.get_guild(710573788856582225):
