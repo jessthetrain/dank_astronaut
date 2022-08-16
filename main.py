@@ -98,7 +98,8 @@ async def userinfo(interaction:Interaction,user:nextcord.User=None):
     if user.banner != None:
         embed.set_image(str(user.banner.url))
     embed.set_footer(text=f"ID: {user.id}")
-    embed.add_field(name="Account Created",value=f"{user.created_at.year}-{user.created_at.month}-{user.created_at.day} at {user.created_at.hour}:{user.created_at.minute}:{user.created_at.second} {user.created_at.tzinfo}")
+    embed.add_field(name="Account Created",value=f"{user.created_at.year}-{user.created_at.month}-{user.created_at.day} at {user.created_at.hour}:{user.created_at.minute}:{user.created_at.second} {user.created_at.tzinfo}\n<t:{calendar.timegm([user.created_at.year,user.created_at.month,user.created_at.day,user.created_at.hour,user.created_at.minute,user.created_at.second])}:R>")
+    embed.add_field(name="Is a bot?",value=str(user.bot))
     await interaction.response.send_message(embed=embed)
 
 @bot.slash_command(name="whois",description="View cool information about another member of the server",guild_ids=[dankMoon])
