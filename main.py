@@ -287,9 +287,9 @@ async def freeloader(interaction:Interaction):
 @freeloader.subcommand(name="perks")
 async def freeloaderperks(interaction:Interaction):
     channel = interaction.channel
-    embed = nextcord.Embed(title="🔨 Don't freeload! 🔨",description="Freeloading will result in your account being banned, and nobody wants that...",colour=nextcord.Color.magenta())
-    embed.set_footer(text="Dank Moon")
-    embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
+    embed = nextcord.Embed(title="🙅 Don't freeload! 🙅",description="Freeloading will result in your account being banned, and nobody wants that...",colour=nextcord.Color.magenta())
+    embed.set_footer(text="Dank Moon",icon_url="https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
+    embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/1009198409741250630/1000681054119673856.gif")
     await channel.send(embed=embed)
 
 @freeloader.subcommand(name="catch")
