@@ -213,6 +213,37 @@ async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
     else:
         await interaction.response.send_message(content="❌ You are not a giveaway manager",ephemeral=True)
 
+@bot.slash_command(name="heist",guild_ids=[dankMoon])
+async def heist(interaction:Interaction):
+    pass
+
+@heist.subcommand(name="donate",description="Donate to a Dank Memer friendly heist!")
+async def hdonate(interaction:Interaction, amount:int=SlashOption(
+    name="amount",
+    description="How much are you donating to the heist?",
+    required=True
+), requirements:str=SlashOption(
+    name="requirements",
+    description="Do you want to add a requirement for people to enter the heist?",
+    required=False,
+    default="None"
+), message:str=SlashOption(
+    name="message",
+    description="Would you like to add a message to your heist?",
+    required=False,
+    default="None"
+)):
+    embed = nextcord.Embed(
+        title="💸 Heist Donation! 💸",
+        description=f"<:pink_arrow_right:1001505500296396890> **Amount** <:purple_arrow_right:1001506139109863576> {amount}\n<:pink_arrow_right:1001505500296396890> **Requirements** <:purple_arrow_right:1001506139109863576> {requirements}\n<:pink_arrow_right:1001505500296396890> **Message** <:purple_arrow_right:1001506139109863576> {message}\n\n<:pink_arrow_right:1001505500296396890> Donated by {interaction.user.mention}",
+        color=nextcord.Color.magenta()
+    )
+    embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
+    embed.set_author(name=interaction.user,icon_url=interaction.user.display_avatar)
+    donationChannel = bot.get_channel(741054074740539413)
+    await interaction.response.send_message(content="✅ <#741054074740539413>",ephemeral=True)
+    await donationChannel.send(content="<@&715270049350549524>",embed=embed)
+
 @bot.event
 async def on_member_ban(guild, user):
     if guild == bot.get_guild(710573788856582225):
