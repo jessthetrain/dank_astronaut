@@ -294,7 +294,7 @@ async def freeloaderperks(interaction:Interaction):
 
 @freeloader.subcommand(name="catch")
 async def catchfreeloader(interaction:Interaction,freeloader:nextcord.User=SlashOption(name="freeloader",description="Who did you catch freeloading?",required=True)):
-    if nextcord.Permissions.ban_members in interaction.user.guild_permissions:
+    if interaction.user.guild_permissions.ban_members == True:
         await interaction.guild.ban(user=freeloader,reason=f"Got caught freeloading by {interaction.user}... imagine")
         await interaction.response.send_message(content=f"Banned {freeloader} for freeloading",ephemeral=True)
     else:
