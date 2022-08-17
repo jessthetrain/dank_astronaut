@@ -59,7 +59,7 @@ async def verification(ctx):
     await ctx.send(embed=embed,view=view)
     await view.wait()
 
-@bot.slash_command(name="avatar",description="View a user's avatar",guild_ids=[dankMoon])
+@bot.slash_command(name="avatar",description="View a user's avatar")
 async def avatar(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
@@ -85,7 +85,7 @@ async def on_member_join(member):
     rulesChan = bot.get_channel(710840207808659517)
     await rulesChan.send(f"{member.mention}",delete_after=1)
 
-@bot.slash_command(name="userinfo",description="View cool information about a Discord user",guild_ids=[dankMoon])
+@bot.slash_command(name="userinfo",description="View cool information about a Discord user")
 async def userinfo(interaction:Interaction,user:nextcord.User=None):
     if user == None:
         user = interaction.user
@@ -102,7 +102,7 @@ async def userinfo(interaction:Interaction,user:nextcord.User=None):
     embed.add_field(name="Is a bot?",value=str(user.bot))
     await interaction.response.send_message(embed=embed)
 
-@bot.slash_command(name="whois",description="View cool information about another member of the server",guild_ids=[dankMoon])
+@bot.slash_command(name="whois",description="View cool information about another member of the server")
 async def whois(interaction:Interaction,member:nextcord.Member=None):
     if member == None:
         member = interaction.user
