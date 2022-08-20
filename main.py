@@ -157,16 +157,17 @@ async def donate(interaction:Interaction, duration:str=SlashOption(
     required=False,
     default="None"
 )):
-    embed = nextcord.Embed(
-        title="🎉 Giveaway Donation! 🎉",
-        description=f"<:pink_arrow_right:1001505500296396890> **Time** <:purple_arrow_right:1001506139109863576> {duration}\n<:pink_arrow_right:1001505500296396890> **Winners** <:purple_arrow_right:1001506139109863576> {winners}\n<:pink_arrow_right:1001505500296396890> **Requirements** <:purple_arrow_right:1001506139109863576> {requirements}\n<:pink_arrow_right:1001505500296396890> **Prize** <:purple_arrow_right:1001506139109863576> {prize}\n<:pink_arrow_right:1001505500296396890> **Message** <:purple_arrow_right:1001506139109863576> {message}\n\n<:pink_arrow_right:1001505500296396890> Donated by {interaction.user.mention}",
-        color=nextcord.Color.magenta()
-    )
-    embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
-    embed.set_author(name=interaction.user,icon_url=interaction.user.display_avatar)
-    donationChannel = bot.get_channel(741054074740539413)
-    await interaction.response.send_message(content="✅ <#741054074740539413>",ephemeral=True)
-    await donationChannel.send(content="<@&766651025364746260>",embed=embed)
+#    embed = nextcord.Embed(
+#        title="🎉 Giveaway Donation! 🎉",
+#        description=f"<:pink_arrow_right:1001505500296396890> **Time** <:purple_arrow_right:1001506139109863576> {duration}\n<:pink_arrow_right:1001505500296396890> **Winners** <:purple_arrow_right:1001506139109863576> {winners}\n<:pink_arrow_right:1001505500296396890> **Requirements** <:purple_arrow_right:1001506139109863576> {requirements}\n<:pink_arrow_right:1001505500296396890> **Prize** <:purple_arrow_right:1001506139109863576> {prize}\n<:pink_arrow_right:1001505500296396890> **Message** <:purple_arrow_right:1001506139109863576> {message}\n\n<:pink_arrow_right:1001505500296396890> Donated by {interaction.user.mention}",
+#        color=nextcord.Color.magenta()
+#    )
+#    embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
+#    embed.set_author(name=interaction.user,icon_url=interaction.user.display_avatar)
+#    donationChannel = bot.get_channel(741054074740539413)
+#    await interaction.response.send_message(content="✅ <#741054074740539413>",ephemeral=True)
+#    await donationChannel.send(content="<@&766651025364746260>",embed=embed)
+    await interaction.response.send_message(content=":x: This command has temporarily been disabled.",ephemeral=True)
 
 @giveaway.subcommand(name="ping", description="Ping the giveaway ping role (For staff)")
 async def gping(interaction:Interaction,donor:nextcord.Member=SlashOption(
@@ -234,16 +235,17 @@ async def hdonate(interaction:Interaction, amount:int=SlashOption(
     required=False,
     default="None"
 )):
-    embed = nextcord.Embed(
-        title="💸 Heist Donation! 💸",
-        description=f"<:pink_arrow_right:1001505500296396890> **Amount** <:purple_arrow_right:1001506139109863576> {amount}\n<:pink_arrow_right:1001505500296396890> **Requirements** <:purple_arrow_right:1001506139109863576> {requirements}\n<:pink_arrow_right:1001505500296396890> **Message** <:purple_arrow_right:1001506139109863576> {message}\n\n<:pink_arrow_right:1001505500296396890> Donated by {interaction.user.mention}",
-        color=nextcord.Color.magenta()
-    )
-    embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
-    embed.set_author(name=interaction.user,icon_url=interaction.user.display_avatar)
-    donationChannel = bot.get_channel(741054074740539413)
-    await interaction.response.send_message(content="✅ <#741054074740539413>",ephemeral=True)
-    await donationChannel.send(content="<@&715270049350549524>",embed=embed)
+#    embed = nextcord.Embed(
+#        title="💸 Heist Donation! 💸",
+#        description=f"<:pink_arrow_right:1001505500296396890> **Amount** <:purple_arrow_right:1001506139109863576> {amount}\n<:pink_arrow_right:1001505500296396890> **Requirements** <:purple_arrow_right:1001506139109863576> {requirements}\n<:pink_arrow_right:1001505500296396890> **Message** <:purple_arrow_right:1001506139109863576> {message}\n\n<:pink_arrow_right:1001505500296396890> Donated by {interaction.user.mention}",
+#        color=nextcord.Color.magenta()
+#    )
+#    embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
+#    embed.set_author(name=interaction.user,icon_url=interaction.user.display_avatar)
+#    donationChannel = bot.get_channel(741054074740539413)
+#    await interaction.response.send_message(content="✅ <#741054074740539413>",ephemeral=True)
+#    await donationChannel.send(content="<@&715270049350549524>",embed=embed)
+    await interaction.response.send_message(content=":x: This command has temporarily been disabled.",ephemeral=True)
 
 @heist.subcommand(name="ping", description="Ping the giveaway ping role (For staff)")
 async def hping(interaction:Interaction,amount:int=SlashOption(
