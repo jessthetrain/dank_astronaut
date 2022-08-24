@@ -160,7 +160,7 @@ async def donate(interaction:Interaction, duration:int=SlashOption(
 )):
     embed = nextcord.Embed(
         title="🎉 Giveaway Donation! 🎉",
-        description=f"<:pink_arrow_right:1001505500296396890> **Time** <:purple_arrow_right:1001506139109863576> {duration}\n<:pink_arrow_right:1001505500296396890> **Winners** <:purple_arrow_right:1001506139109863576> {winners}\n<:pink_arrow_right:1001505500296396890> **Requirements** <:purple_arrow_right:1001506139109863576> {requirements}\n<:pink_arrow_right:1001505500296396890> **Prize** <:purple_arrow_right:1001506139109863576> {prize}\n<:pink_arrow_right:1001505500296396890> **Message** <:purple_arrow_right:1001506139109863576> {message}\n\n<:pink_arrow_right:1001505500296396890> Donated by {interaction.user.mention}",
+        description=f"<:pink_arrow_right:1001505500296396890> **Time** <:purple_arrow_right:1001506139109863576> {duration} hour(s)\n<:pink_arrow_right:1001505500296396890> **Winners** <:purple_arrow_right:1001506139109863576> {winners}\n<:pink_arrow_right:1001505500296396890> **Requirements** <:purple_arrow_right:1001506139109863576> {requirements}\n<:pink_arrow_right:1001505500296396890> **Prize** <:purple_arrow_right:1001506139109863576> {prize}\n<:pink_arrow_right:1001505500296396890> **Message** <:purple_arrow_right:1001506139109863576> {message}\n\n<:pink_arrow_right:1001505500296396890> Donated by {interaction.user.mention}",
         color=nextcord.Color.magenta()
     )
     embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
