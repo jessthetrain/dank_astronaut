@@ -135,7 +135,9 @@ async def giveaway(interaction:Interaction):
 async def donate(interaction:Interaction, duration:int=SlashOption(
     name="hours",
     description="How long do you want the giveaway to last?",
-    required=True
+    required=True,
+    min_value=1,
+    max_value=12
 ), winners:int=SlashOption(
     name="winners",
     description="How many winners should the bot choose?",
