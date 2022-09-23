@@ -337,8 +337,9 @@ async def report(interaction:Interaction,user:nextcord.Member=SlashOption(
     embed.add_field(name="Evidence",value=proof)
     embed.set_author(name=interaction.user.name,icon_url=interaction.user.avatar)
     embed.set_footer(text="Dank Moon",icon_url="https://images-ext-1.discordapp.net/external/7Ne3WO4lcdhIcP9gw9qvxWFikTYqcsrnDSNwQEZvkzg/%3Fsize%3D4096/https/cdn.discordapp.com/icons/710573788856582225/19fa3e4d220f5d1dd0663f36add1e0ca.png?width=472&height=472")
+    embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/1022926691389145148/report.png")
     await reportsChannel.send(embed=embed)
-    await interaction.response.send_message("✅ Your report has been submitted to the staff.")
+    await interaction.response.send_message("✅ Your report has been submitted to the staff.",ephemeral=True)
 
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
