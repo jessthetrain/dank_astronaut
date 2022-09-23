@@ -332,7 +332,7 @@ async def report(interaction:Interaction,user:nextcord.Member=SlashOption(
     required = True
 )):
     reportsChannel = bot.get_channel(1022921093243228281)
-    embed = nextcord.Embed(title="User report",color=nextcord.Color.red(),description=f"User reported: {user.mention}\nReported by: {interaction.user.mention}",timestamp=datetime.datetime.now)
+    embed = nextcord.Embed(title="User report",color=nextcord.Color.red(),description=f"User reported: {user.mention}\nReported by: {interaction.user.mention}",timestamp=datetime.datetime.now())
     embed.add_field(name="Reason",value=reason)
     embed.add_field(name="Evidence",value=proof)
     embed.set_author(name=interaction.user.name,icon_url=interaction.user.avatar)
