@@ -249,7 +249,7 @@ async def hdonate(interaction:Interaction, amount:int=SlashOption(
 #    await donationChannel.send(content="<@&715270049350549524>",embed=embed)
     await interaction.response.send_message(content=":x: This command has temporarily been disabled.",ephemeral=True)
 
-@heist.subcommand(name="ping", description="Ping the giveaway ping role (For staff)")
+@heist.subcommand(name="ping", description="Ping the heist ping role (For staff)")
 async def hping(interaction:Interaction,amount:int=SlashOption(
     name="amount",
     description="How much is the heist?",
@@ -316,6 +316,29 @@ async def on_member_ban(guild, user):
         embed.set_image("https://cdn.discordapp.com/attachments/710864896153354301/1003845313842401350/unknown.jpeg")
         general = bot.get_channel(710573789309698060)
         await general.send(embed=embed)
+
+@bot.slash_command(name="report",description="Report a user for breaking the rules",guild_ids=[dankMoon])
+async def report(interaction:Interaction,user:nextcord.Member=SlashOption(
+    name = "user",
+    description = "Who are you reporting?",
+    required = True
+), reason:str=SlashOption(
+    name = "reason",
+    description = "What are you reporting them for?",
+    required = True
+), proof:str=SlashOption(
+    name = "evidence",
+    description = "Link any proof of this user breaking rules here",
+    required = True
+)):
+    reportsChannel = bot.get_channel(1022921093243228281)
+    embed = nextcord.Embed(title="User report",color=nextcord.Color.red(),description=f"User reported: {user.mention}\nReported by: {interaction.user.mention}",timestamp=datetime.datetime.now)
+    embed.add_field(name="Reason",value=reason)
+    embed.add_field(name="Evidence",value=proof)
+    embed.set_author(name=interaction.user.name,icon_url=interaction.user.avatar)
+    embed.set_footer(text="Dank Moon",icon_url="https://images-ext-1.discordapp.net/external/7Ne3WO4lcdhIcP9gw9qvxWFikTYqcsrnDSNwQEZvkzg/%3Fsize%3D4096/https/cdn.discordapp.com/icons/710573788856582225/19fa3e4d220f5d1dd0663f36add1e0ca.png?width=472&height=472")
+    await reportsChannel.send(embed=embed)
+    await interaction.response.send_message("✅ Your report has been submitted to the staff.")
 
 
 bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
