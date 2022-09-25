@@ -343,4 +343,4 @@ async def report(interaction:Interaction,user:nextcord.Member=SlashOption(
     await interaction.response.send_message("✅ Your report has been submitted to the staff.",ephemeral=True)
 
 
-bot.run(os.environ.get("TOKEN"))
+bot.run(os.environ['TOKEN'])
