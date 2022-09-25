@@ -9,20 +9,20 @@ The bot has a message in the verification channel in the server which has a butt
 When someone gets banned from the guild, the bot sends a meme in the space-chat channel.
 ### Commands
 #### Avatar
-The '/avatar' command is used to view a user's avatar.
+The `/avatar` command is used to view a user's avatar.
 #### Giveaway Donate
-The '/giveaway donate' command is used by members in the donations channel to tell a giveaway manager they would like to donate to a giveaway.
+The `/giveaway donate` command is used by members in the donations channel to tell a giveaway manager they would like to donate to a giveaway.
 #### Giveaway Ping
-The '/giveaway ping' command is used by Giveaway Managers to ping the "Giveaway Ping" role to let people know that a giveaway is being hosted.
+The `/giveaway ping` command is used by Giveaway Managers to ping the "Giveaway Ping" role to let people know that a giveaway is being hosted.
 #### Heist Donate
-The '/heist donate' command is used by members in the donations channel to tell a heist manager they would like to donate to a heist.
+The `/heist donate` command is used by members in the donations channel to tell a heist manager they would like to donate to a heist.
 #### Heist Ping
-The '/heist ping' command is used by Heist Managers to ping the "Friendly Heist Ping" role to let people know that a heist is being hosted.
+The `/heist ping` command is used by Heist Managers to ping the "Friendly Heist Ping" role to let people know that a heist is being hosted.
 #### Ping
-The '/ping' command is used to check the latency of the bot.
+The `/ping` command is used to check the latency of the bot.
 #### Report
-The '/report' command is used to report someone to the server's staff for breaking the rules.
+The `/report` command is used to report someone to the server's staff for breaking the rules.
 #### User info
-The '/userinfo' command is used to get information about any Discord user profile.
+The `/userinfo` command is used to get information about any Discord user profile.
 #### Whois
-The '/whois' command is used to get guild-specific information about a member of the server.
+The `/whois` command is used to get guild-specific information about a member of the server.
