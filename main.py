@@ -1,5 +1,4 @@
-from sre_constants import SUCCESS
-from discord import AllowedMentions
+from nextcord import AllowedMentions
 import nextcord
 from nextcord import Interaction, SlashOption, ChannelType, Intents
 from nextcord.abc import GuildChannel
@@ -8,13 +7,15 @@ import os
 import time
 import calendar
 import datetime
-intents = nextcord.Intents.default()
+from dotenv import load_dotenv
+intents = Intents.default()
 intents.message_content = True
 intents.members = True
 intents.bans = True
 nextcord.http._modify_api_version(9)
 bot = commands.Bot(command_prefix=["<@999760430052417638> ", "a.", "A."], case_insensitive=True,intents=intents)
 dankMoon = 710573788856582225
+load_dotenv()
 
 class verifyButtons(nextcord.ui.View):
     def __init__(self):
@@ -342,4 +343,4 @@ async def report(interaction:Interaction,user:nextcord.Member=SlashOption(
     await interaction.response.send_message("✅ Your report has been submitted to the staff.",ephemeral=True)
 
 
-bot.run("OTk5NzYwNDMwMDUyNDE3NjM4.GOfJE9.SzY__65AkGeN6rWRaTp4egYhl3gdWN6pm5my1g")
+bot.run(os.environ.get("TOKEN"))
