@@ -34,7 +34,7 @@ class verifyButtons(nextcord.ui.View):
             await general.send(f"Everyone welcome {interaction.user.mention} to the server!\nIf you are looking for a heist, it will probably be in <#711435197807067156> :slight_smile:",allowed_mentions=mentions,delete_after=120)
         self.value = True
 
-@bot.event # This event prints in the console when the bot has logged in
+@bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
     await bot.change_presence(activity=nextcord.Game(name=".gg/dPgEcaE4TM"),status=nextcord.Status.idle)
@@ -48,6 +48,37 @@ async def on_ready():
     view = verifyButtons()
     await verificationChannel.send(embed=embed,view=view)
     await view.wait()
+
+for fn in os.listdir("./cogs"):
+    if fn.endswith(".py"):
+        bot.load_extension(f"cogs.{fn[:-3]}")
+
+@bot.command()
+async def load(ctx, extension):
+    if ctx.author.id == 688330308688543744:
+        bot.load_extension(f"cogs.{extension}")
+        await ctx.send(f"⚙ Loaded {extension} cog!")
+    else:
+        await ctx.channel.purge(limit=1)
+        await ctx.send(":x: This is an owner only command",delete_after=5)
+
+@bot.command()
+async def unload(ctx, extension):
+    if ctx.author.id == 688330308688543744:
+        bot.unload_extension(f"cogs.{extension}")
+        await ctx.send(f"⚙ Unloaded {extension} cog!")
+    else:
+        await ctx.channel.purge(limit=1)
+        await ctx.send(":x: This is an owner only command",delete_after=5)
+
+@bot.command()
+async def reload(ctx, extension):
+    if ctx.author.id == 688330308688543744:
+        bot.reload_extension(f"cogs.{extension}")
+        await ctx.send(f"⚙ Reloaded {extension} cog!")
+    else:
+        await ctx.channel.purge(limit=1)
+        await ctx.send(":x: This is an owner only command",delete_after=5)
 
 @commands.has_role(805719483930771477)
 @bot.command()
