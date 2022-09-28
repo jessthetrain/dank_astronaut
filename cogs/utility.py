@@ -6,11 +6,12 @@ import os
 import time
 import calendar
 import datetime
-dankMoon = 710573788856582225
 
 class Utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    dankMoon = 710573788856582225
     
     @nextcord.slash_command(name="avatar",description="View a user's avatar")
     async def avatar(self, interaction:Interaction, user:nextcord.User=None):

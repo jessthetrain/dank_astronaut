@@ -6,12 +6,13 @@ import os
 import time
 import calendar
 import datetime
-dankMoon = 710573788856582225
 
 class Info(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
+    dankMoon = 710573788856582225
+
     @nextcord.slash_command(name="freeloader",guild_ids=[dankMoon])
     async def freeloader(self,interaction:Interaction):
         channel = interaction.channel

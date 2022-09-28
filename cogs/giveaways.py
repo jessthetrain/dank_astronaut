@@ -6,11 +6,12 @@ import os
 import time
 import calendar
 import datetime
-dankMoon = 710573788856582225
 
 class Giveaways(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    dankMoon = 710573788856582225
     
     @nextcord.slash_command(name="giveaway",guild_ids=[dankMoon])
     async def giveaway(self,interaction:Interaction):
