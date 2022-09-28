@@ -12,7 +12,7 @@ class Utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @commands.slash_command(name="avatar",description="View a user's avatar")
+    @nextcord.slash_command(name="avatar",description="View a user's avatar")
     async def avatar(self, interaction:Interaction, user:nextcord.User=None):
         if user == None:
             user = interaction.user
@@ -23,12 +23,12 @@ class Utility(commands.Cog):
             embed.set_image(url=user.default_avatar)
         await interaction.response.send_message(embed=embed)
     
-    @commands.slash_command(name="ping",description="🏓 Shows the bot's latency",force_global=True)
+    @nextcord.slash_command(name="ping",description="🏓 Shows the bot's latency",force_global=True)
     async def ping(self, interaction:Interaction):
         embed = nextcord.Embed(title="Pong! 🏓",description=f"{round(self.bot.latency * 1000, 1)}ms",color=nextcord.Color.magenta())
         await interaction.response.send_message(embed=embed)
     
-    @commands.slash_command(name="userinfo",description="View cool information about a Discord user")
+    @nextcord.slash_command(name="userinfo",description="View cool information about a Discord user")
     async def userinfo(self,interaction:Interaction,user:nextcord.User=None):
         if user == None:
             user = interaction.user
@@ -45,7 +45,7 @@ class Utility(commands.Cog):
         embed.add_field(name="Is a bot?",value=str(user.bot))
         await interaction.response.send_message(embed=embed)
 
-    @commands.slash_command(name="whois",description="View cool information about another member of the server")
+    @nextcord.slash_command(name="whois",description="View cool information about another member of the server")
     async def whois(self,interaction:Interaction,member:nextcord.Member=None):
         if member == None:
             member = interaction.user
@@ -70,7 +70,7 @@ class Utility(commands.Cog):
             embed.add_field(name="Roles",value=f"{str(len(member.roles))}: (Too many to list)",inline=False)
         await interaction.response.send_message(embed=embed)
         
-    @commands.slash_command(name="report",description="Report a user for breaking the rules",guild_ids=[dankMoon])
+    @nextcord.slash_command(name="report",description="Report a user for breaking the rules",guild_ids=[dankMoon])
     async def report(self,interaction:Interaction,user:nextcord.Member=SlashOption(
         name = "user",
         description = "Who are you reporting?",

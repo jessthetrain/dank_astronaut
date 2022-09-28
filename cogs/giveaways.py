@@ -12,7 +12,7 @@ class Giveaways(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @commands.slash_command(name="giveaway",guild_ids=[dankMoon])
+    @nextcord.slash_command(name="giveaway",guild_ids=[dankMoon])
     async def giveaway(self,interaction:Interaction):
         pass
 

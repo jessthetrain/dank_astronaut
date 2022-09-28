@@ -12,7 +12,7 @@ class Info(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-    @commands.slash_command(name="freeloader",guild_ids=[dankMoon])
+    @nextcord.slash_command(name="freeloader",guild_ids=[dankMoon])
     async def freeloader(self,interaction:Interaction):
         channel = interaction.channel
         embed = nextcord.Embed(title="🙅 Don't freeload! 🙅",description="Freeloading will result in your account being banned, meaning you miss out on all the future heists, giveaways, and other events we host on the server!",colour=nextcord.Color.magenta())

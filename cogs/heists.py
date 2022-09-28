@@ -12,7 +12,7 @@ class Heists(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command(name="heist",guild_ids=[dankMoon])
+    @nextcord.slash_command(name="heist",guild_ids=[dankMoon])
     async def heist(self,interaction:Interaction):
         pass
 
