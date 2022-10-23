@@ -18,18 +18,16 @@ class Giveaways(commands.Cog):
         pass
 
     @giveaway.subcommand(name="donate",description="Donate to a Dank Memer Giveaway!")
-    async def donate(self,interaction:Interaction, duration:int=SlashOption(
-        name="hours",
+    async def donate(self, interaction:Interaction, duration:str=SlashOption(
+        name="duration",
         description="How long do you want the giveaway to last?",
-        required=True,
-        min_value=1,
-        max_value=12
+        required=True
     ), winners:int=SlashOption(
         name="winners",
         description="How many winners should the bot choose?",
         required=True,
         min_value=1,
-        max_value=5
+        max_value=10
     ), prize:str=SlashOption(
         name="prize",
         description="What are you giving away?",
@@ -38,8 +36,7 @@ class Giveaways(commands.Cog):
         name="requirements",
         description="Do you want to add a requirement for people to enter the giveaway?",
         required=False,
-        default="None",
-        choices=["Grinder","Booster"]
+        default="None"
     ), message:str=SlashOption(
         name="message",
         description="Would you like to add a message to your giveaway?",
@@ -48,7 +45,7 @@ class Giveaways(commands.Cog):
     )):
         embed = nextcord.Embed(
             title="🎉 Giveaway Donation! 🎉",
-            description=f"<:pink_arrow_right:1001505500296396890> **Time** <:purple_arrow_right:1001506139109863576> {duration} hour(s)\n<:pink_arrow_right:1001505500296396890> **Winners** <:purple_arrow_right:1001506139109863576> {winners}\n<:pink_arrow_right:1001505500296396890> **Requirements** <:purple_arrow_right:1001506139109863576> {requirements}\n<:pink_arrow_right:1001505500296396890> **Prize** <:purple_arrow_right:1001506139109863576> {prize}\n<:pink_arrow_right:1001505500296396890> **Message** <:purple_arrow_right:1001506139109863576> {message}\n\n<:pink_arrow_right:1001505500296396890> Donated by {interaction.user.mention}",
+            description=f"<:pink_arrow_right:1001505500296396890> **Time** <:purple_arrow_right:1001506139109863576> {duration}\n<:pink_arrow_right:1001505500296396890> **Winners** <:purple_arrow_right:1001506139109863576> {winners}\n<:pink_arrow_right:1001505500296396890> **Requirements** <:purple_arrow_right:1001506139109863576> {requirements}\n<:pink_arrow_right:1001505500296396890> **Prize** <:purple_arrow_right:1001506139109863576> {prize}\n<:pink_arrow_right:1001505500296396890> **Message** <:purple_arrow_right:1001506139109863576> {message}\n\n<:pink_arrow_right:1001505500296396890> Donated by {interaction.user.mention}",
             color=nextcord.Color.magenta()
         )
         embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/999801982770491522/dank_moon.png")
