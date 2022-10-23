@@ -7,6 +7,11 @@ import os
 import time
 import calendar
 import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
+
+TOKEN = os.getenv('TOKEN')
 intents = Intents.default()
 intents.message_content = True
 intents.members = True
@@ -109,4 +114,4 @@ async def on_member_ban(guild, user):
         await general.send(embed=embed)
 
 
-bot.run(os.environ['TOKEN'])
+bot.run(TOKEN)
