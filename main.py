@@ -99,18 +99,6 @@ async def on_member_join(member):
     rulesChan = bot.get_channel(710840207808659517)
     await rulesChan.send(f"{member.mention}",delete_after=1)
 
-#@freeloader.subcommand(name="catch")
-#async def catchfreeloader(interaction:Interaction,freeloader:nextcord.User=SlashOption(name="freeloader",description="Who did you catch freeloading?",required=True)):
-#    if interaction.user.guild_permissions.ban_members == True:
-#        if freeloader == interaction.user:
-#            await interaction.response.send_message(content="https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/behaviours/help-for-suicidal-thoughts/")
-#        else:
-#            await interaction.guild.ban(user=freeloader,reason=f"Got caught freeloading by {interaction.user}... imagine")
-#            await interaction.response.send_message(content=f"Banned {freeloader} for freeloading")
-#    else:
-#        await interaction.response.send_message(content="❌ You cannot ban members",ephemeral=True)
-#    await interaction.response.send_message(content=":x: This command has temporarily been disabled.",ephemeral=True)
-
 @bot.event
 async def on_member_ban(guild, user):
     if guild == bot.get_guild(710573788856582225):
