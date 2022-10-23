@@ -8,9 +8,7 @@ import time
 import calendar
 import datetime
 from dotenv import load_dotenv
-
 load_dotenv()
-
 TOKEN = os.getenv('TOKEN')
 intents = Intents.default()
 intents.message_content = True
