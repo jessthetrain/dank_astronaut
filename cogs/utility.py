@@ -114,7 +114,7 @@ class Utility(commands.Cog):
             )
             embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/1033915369246695475/unknown.png")
             embed.add_field(name="Input",value=f"`{maths}`",inline=False)
-            embed.add_field(name="Output",value=f"`{str(output)}`\nor\n`{str(formatted)}`",inline=False)
+            embed.add_field(name="Output",value=f"Calculated `{str(formatted)}`\nRaw: `{str(output)}`",inline=False)
             embed.set_footer(text=interaction.guild.name,icon_url=interaction.guild.icon.url)
             await interaction.response.send_message(embed=embed)
 
