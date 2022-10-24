@@ -86,7 +86,7 @@ class Utility(commands.Cog):
         required = True
     )):
         reportsChannel = self.bot.get_channel(1022921093243228281)
-        embed = nextcord.Embed(title="User report",color=nextcord.Color.red(),description=f"User reported: {user.mention}\nReported by: {interaction.user.mention}",timestamp=datetime.datetime.now())
+        embed = nextcord.Embed(title="User report",color=nextcord.Color.red(),description=f"User reported: {user.mention} `ID: {user.id}`\nReported by: {interaction.user.mention} `ID: {interaction.user.id}`",timestamp=datetime.datetime.now())
         embed.add_field(name="Reason",value=reason,inline=False)
         embed.add_field(name="Evidence",value=proof,inline=False)
         embed.set_author(name=f"{interaction.user.name}{interaction.user.discriminator}",icon_url=interaction.user.avatar)
