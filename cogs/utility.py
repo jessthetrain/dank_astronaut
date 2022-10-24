@@ -95,6 +95,29 @@ class Utility(commands.Cog):
         await reportsChannel.send(content="<@&796430109090250763>",embed=embed)
         await interaction.response.send_message("✅ Your report has been submitted to the staff.",ephemeral=True)
 
+    @nextcord.slash_command(name="calc",description="Calculate something from a mathmatical expression")
+    async def calc(self,interaction:Interaction,maths:str=SlashOption(
+        name="input",
+        description="What do you need to calculate?",
+        required=True,
+    )):
+        try:
+            output = eval(maths)
+        except:
+            await interaction.response.send_message(":x: Could not do math",ephemeral=True)
+        else:
+            formatted = f'{output:,}'
+            embed = nextcord.Embed(
+                title="Calculator",
+                colour=nextcord.Colour.magenta(),
+                timestamp=datetime.datetime.now()
+            )
+            embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/1033915369246695475/unknown.png")
+            embed.add_field(name="Input",value=f"`{maths}`",inline=False)
+            embed.add_field(name="Output",value=f"`{str(output)}`\nor\n`{str(formatted)}`",inline=False)
+            embed.set_footer(text=interaction.guild.name,icon_url=interaction.guild.icon.url)
+            await interaction.response.send_message(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(Utility(bot))
