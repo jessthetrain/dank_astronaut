@@ -86,7 +86,7 @@ class Utility(commands.Cog):
         required = True
     )):
         reportsChannel = self.bot.get_channel(1022921093243228281)
-        embed = nextcord.Embed(title="User report",color=nextcord.Color.red(),description=f"User reported: {user.mention}\nReported by: {interaction.user.mention}",timestamp=datetime.datetime.now())
+        embed = nextcord.Embed(title="User report",color=nextcord.Color.red(),description=f"User reported: {user.mention} `ID: {user.id}`\nReported by: {interaction.user.mention} `ID: {interaction.user.id}`",timestamp=datetime.datetime.now())
         embed.add_field(name="Reason",value=reason,inline=False)
         embed.add_field(name="Evidence",value=proof,inline=False)
         embed.set_author(name=f"{interaction.user.name}{interaction.user.discriminator}",icon_url=interaction.user.avatar)
@@ -94,6 +94,29 @@ class Utility(commands.Cog):
         embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/1022926691389145148/report.png")
         await reportsChannel.send(content="<@&796430109090250763>",embed=embed)
         await interaction.response.send_message("✅ Your report has been submitted to the staff.",ephemeral=True)
+
+    @nextcord.slash_command(name="calc",description="Calculate something from a mathmatical expression")
+    async def calc(self,interaction:Interaction,maths:str=SlashOption(
+        name="input",
+        description="What do you need to calculate?",
+        required=True,
+    )):
+        try:
+            output = eval(maths)
+        except:
+            await interaction.response.send_message(":x: Could not do math",ephemeral=True)
+        else:
+            formatted = f'{output:,}'
+            embed = nextcord.Embed(
+                title="Calculator",
+                colour=nextcord.Colour.magenta(),
+                timestamp=datetime.datetime.now()
+            )
+            embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/1033915369246695475/unknown.png")
+            embed.add_field(name="Input",value=f"`{maths}`",inline=False)
+            embed.add_field(name="Output",value=f"Calculated `{str(formatted)}`\nRaw: `{str(output)}`",inline=False)
+            embed.set_footer(text=interaction.guild.name,icon_url=interaction.guild.icon.url)
+            await interaction.response.send_message(embed=embed)
 
 
 def setup(bot):
