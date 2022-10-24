@@ -54,7 +54,7 @@ class Staff(commands.Cog):
             else:
                 await interaction.response.send_message("✅ Sent DM")
             announceChan = self.bot.get_channel(711381617158914088)
-            staffAnnounceChan = self.bot.get_chan(768367034009518090)
+            staffAnnounceChan = self.bot.get_channel(768367034009518090)
             publicEmbed = nextcord.Embed(
                 title="🎉 Promotion! 🎉",
                 description=f"{mos.mention} has been promoted!! 🥳",
