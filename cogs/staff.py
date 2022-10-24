@@ -50,11 +50,11 @@ class Staff(commands.Cog):
             try:
                 mos.send(embed=embed)
             except:
-                interaction.response.send_message(":warning: Could not send DM to user.")
+                await interaction.response.send_message(":warning: Could not send DM to user.")
             else:
-                interaction.response.send_message("✅ Sent DM")
+                await interaction.response.send_message("✅ Sent DM")
         else:
-            interaction.response.send_message(content=":x: You are not permitted to do this",ephemeral=True)
+            await interaction.response.send_message(content=":x: You are not permitted to do this",ephemeral=True)
 
 
 def setup(bot):
