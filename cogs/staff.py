@@ -48,7 +48,7 @@ class Staff(commands.Cog):
             embed.set_footer(text=interaction.guild.name,icon_url=interaction.guild.icon.url)
             embed.set_thumbnail(interaction.guild.icon.url)
             try:
-                mos.send(embed=embed)
+                await mos.send(embed=embed)
             except:
                 await interaction.response.send_message(":warning: Could not send DM to user.")
             else:
