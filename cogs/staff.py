@@ -37,14 +37,14 @@ class Staff(commands.Cog):
         adminRole = interaction.guild.get_role(805719483930771477)
         if adminRole in interaction.user.roles:
             embed = nextcord.Embed(
-                title="🌜 Congratulations! 🌛",
+                title="🎉 Congratulations! 🎉",
                 description=f"You have been promoted in {interaction.guild.name}",
                 timestamp=datetime.datetime.now(),
                 colour=nextcord.Colour.magenta()
             )
             embed.add_field(name="From",value=oldRank,inline=True)
             embed.add_field(name="To",value=newRank,inline=True)
-            embed.add_field(name="Message from Admin:",value=message,inline=False)
+            embed.add_field(name="Message:",value=message,inline=False)
             embed.set_footer(text=interaction.guild.name,icon_url=interaction.guild.icon.url)
             embed.set_thumbnail(interaction.guild.icon.url)
             try:
@@ -53,6 +53,21 @@ class Staff(commands.Cog):
                 await interaction.response.send_message(":warning: Could not send DM to user.")
             else:
                 await interaction.response.send_message("✅ Sent DM")
+            announceChan = self.bot.get_channel(711381617158914088)
+            staffAnnounceChan = self.bot.get_chan(768367034009518090)
+            publicEmbed = nextcord.Embed(
+                title="🎉 Promotion! 🎉",
+                description=f"{mos.mention} has been promoted!! 🥳",
+                timestamp=datetime.datetime.now(),
+                colour=nextcord.Colour.magenta()
+            )
+            publicEmbed.add_field(name="From",value=oldRank,inline=True)
+            publicEmbed.add_field(name="To",value=newRank,inline=True)
+            publicEmbed.set_footer(text=interaction.guild.name,icon_url=interaction.guild.icon.url)
+            publicEmbed.set_thumbnail(interaction.guild.icon.url)
+            await announceChan.send(embed=publicEmbed)
+            await announceChan.send(f"Please congratualte {mos.mention} on their promotion in <#710573789309698060>!")
+            await staffAnnounceChan.send(embed=publicEmbed)
         else:
             await interaction.response.send_message(content=":x: You are not permitted to do this",ephemeral=True)
 
