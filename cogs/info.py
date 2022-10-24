@@ -48,6 +48,21 @@ class Info(commands.Cog):
         embed.set_footer(text="Thank you so much to all our boosters!",icon_url="https://images-ext-1.discordapp.net/external/s4c9yiEAUrRGEj8sxoFSu-yDoz7d6VxSPt-qsdr9n58/%3Fsize%3D1024/https/cdn.discordapp.com/icons/710573788856582225/19fa3e4d220f5d1dd0663f36add1e0ca.png?width=472")
         await interaction.response.send_message(embed=embed)
 
+    @nextcord.slash_command(name="membercount",description="Shows you how many members are in the server!")
+    async def membercount(self, interaction:Interaction):
+        memberCount = interaction.guild.member_count
+        embed = nextcord.Embed(
+            title=interaction.guild.name,
+            timestamp=datetime.datetime.now(),
+            colour=nextcord.Colour.magenta()
+        )
+        embed.add_field(name="Member Count",value=f"`{memberCount}` members")
+        embed.set_thumbnail(interaction.guild.icon.url)
+        embed.set_footer(text=str(interaction.user),icon_url=interaction.user.display_avatar.url)
+        if interaction.guild_id == 710573788856582225:
+            embed.add_field(name="Goal",value=f"`750` Members\n`{memberCount/750*100}%` complete")
+        await interaction.response.send_message(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(Info(bot))
