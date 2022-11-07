@@ -7,6 +7,13 @@ import time
 import calendar
 import datetime
 
+class ApplicationLinks(nextcord.ui.View):
+    def __init__(self):
+        super().__init__()
+        self.value = None
+        self.add_item(nextcord.ui.Button(style=nextcord.ButtonStyle.link, url="https://dyno.gg/form/43615c90", label="Grinder"))
+        self.add_item(nextcord.ui.Button(style=nextcord.ButtonStyle.link, url="https://dyno.gg/form/82afebe4", label="Partnership Manager"))
+
 class Info(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -72,7 +79,8 @@ class Info(commands.Cog):
         embed.add_field(name="Giveaway Manager",value="Currently Closed")
         embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/996446872451432498/1038885056585945188/my-icon.png")
         embed.set_footer(text=interaction.guild.name,icon_url=interaction.guild.icon.url)
-        await interaction.response.send_message(embed=embed)
+        view = ApplicationLinks()
+        await interaction.response.send_message(embed=embed,view=view)
 
 
 def setup(bot):
