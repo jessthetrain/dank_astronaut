@@ -15,7 +15,7 @@ intents.message_content = True
 intents.members = True
 intents.bans = True
 nextcord.http._modify_api_version(9)
-bot = commands.Bot(command_prefix=["<@999760430052417638> ", "a.", "A."], case_insensitive=True,intents=intents)
+bot = commands.Bot(command_prefix=["<@999760430052417638> ", "a.", "A."], case_insensitive=True,intents=intents,help_command=None)
 dankMoon = 710573788856582225
 
 class verifyButtons(nextcord.ui.View):
@@ -36,6 +36,20 @@ class verifyButtons(nextcord.ui.View):
             mentions = nextcord.AllowedMentions(everyone=False,users=True,roles=False)
             await general.send(f"Everyone welcome {interaction.user.mention} to the server!\nOur next heist will be in <#711435197807067156> :slight_smile:",allowed_mentions=mentions,delete_after=120)
         self.value = True
+
+class nppButton(nextcord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=3600)
+        self.value = None
+    
+    @nextcord.ui.button(label="Don't ping me for partnerships!",style=nextcord.ButtonStyle.red,emoji="✖")
+    async def NPP(self, button:nextcord.ui.Button, interaction:Interaction):
+        guild = bot.get_guild(710573788856582225)
+        nppRole = guild.get_role(979434838916468736)
+        fphRole = guild.get_role(797062148295622687)
+        await interaction.user.add_roles(nppRole)
+        await interaction.user.remove_roles(fphRole)
+        self.value=True
 
 @bot.event
 async def on_ready():
@@ -110,6 +124,16 @@ async def on_member_ban(guild, user):
         embed.set_image("https://cdn.discordapp.com/attachments/710864896153354301/1003845313842401350/unknown.jpeg")
         general = bot.get_channel(710573789309698060)
         await general.send(embed=embed)
+
+@bot.event
+async def on_message(message):
+    if message.channel.id == 711435574271279105:
+        if message.author.id != 999760430052417638:
+            if message.author.id != 1024760683935576155:
+                embed = nextcord.Embed(title="Don't want to be pinged here?",description="Click the button below to stop being pinged for partnerships!",colour=nextcord.Colour.magenta())
+                view = nppButton()
+                await message.channel.purge(limit=5,check=lambda m:m.author==bot.user)
+                await message.channel.send(embed=embed,view=view)
 
 
 bot.run(TOKEN)
