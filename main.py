@@ -15,7 +15,7 @@ intents.message_content = True
 intents.members = True
 intents.bans = True
 nextcord.http._modify_api_version(9)
-bot = commands.Bot(command_prefix=["<@999760430052417638> ", "a.", "A."], case_insensitive=True,intents=intents)
+bot = commands.Bot(command_prefix=["<@999760430052417638> ", "a.", "A."], case_insensitive=True,intents=intents,help_command=None)
 dankMoon = 710573788856582225
 
 class verifyButtons(nextcord.ui.View):
