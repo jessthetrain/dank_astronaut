@@ -35,7 +35,7 @@ class Info(commands.Cog):
 
     @perks.subcommand(name="grinder",description="Awesome perks you can unlock by becoming a grinder!")
     async def grinderperks(self, interaction:Interaction):
-        embed = nextcord.Embed(title="🐸 Dank Grinder Perks 🐸",description="**-** <@&1008502007042150532> role\n**-** Access to <#1008504637097263154> with 4x amari multi\n**-** Custom private channel with up to 4 friends and all the bots\n**-** 2 ARs via carl-bot (First one claimed after 7m grinder payments, and second one after 21m)\n**-** Grinder exclusive giveaways!\n\n**How to become grinder?**\nThe requirement is 1m daily **or** 7m weekly. You can apply in <#772265266284986369> by running `/apply`.",color=nextcord.Color.from_rgb(65,117,5))
+        embed = nextcord.Embed(title="🐸 Dank Grinder Perks 🐸",description="**-** <@&1008502007042150532> role\n**-** Access to <#1008504637097263154> with 4x amari multi\n**-** Custom private channel with up to 4 friends and all the bots\n**-** 2 ARs via carl-bot (First one claimed after 7m grinder payments, and second one after 21m)\n**-** Grinder exclusive giveaways!\n\n**How to become grinder?**\nThe requirement is 1m daily **or** 7m weekly. You can apply by filling out [this form.](https://dyno.gg/form/43615c90)",color=nextcord.Color.from_rgb(65,117,5))
         embed.set_thumbnail("https://cdn.discordapp.com/attachments/996446872451432498/1008507712788779107/855478199151493122.gif")
         embed.set_footer(text="Thank you so much to all our grinders!",icon_url="https://cdn.discordapp.com/icons/710573788856582225/19fa3e4d220f5d1dd0663f36add1e0ca.png?size=4096")
         await interaction.response.send_message(embed=embed)
@@ -61,6 +61,17 @@ class Info(commands.Cog):
         embed.set_footer(text=str(interaction.user),icon_url=interaction.user.display_avatar.url)
         if interaction.guild_id == 710573788856582225:
             embed.add_field(name="Goal",value=f"`750` Members\n`{round(memberCount/750*100,2)}%` complete")
+        await interaction.response.send_message(embed=embed)
+    
+    @nextcord.slash_command(name="applications",description="Apply to become a staff member in Dank Moon!",guild_ids=[dankMoon])
+    async def applications(self, interaction:Interaction):
+        embed = nextcord.Embed(title="Applications!",colour=nextcord.Colour.magenta(),description="Check out the `/perks` command group!",timestamp=datetime.datetime.now())
+        embed.add_field(name="Grinder",value="[Click here to apply!](https://dyno.gg/form/43615c90)")
+        embed.add_field(name="Partnership Manager",value="[Click here to apply!](https://dyno.gg/form/82afebe4)")
+        embed.add_field(name="Trial Moderator",value="Currently Closed")
+        embed.add_field(name="Giveaway Manager",value="Currently Closed")
+        embed.set_thumbnail(url="https://cdn.discordapp.com/attachments/996446872451432498/1038885056585945188/my-icon.png")
+        embed.set_footer(text=interaction.guild.name,icon_url=interaction.guild.icon.url)
         await interaction.response.send_message(embed=embed)
 
 
