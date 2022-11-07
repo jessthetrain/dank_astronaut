@@ -36,7 +36,7 @@ class verifyButtons(nextcord.ui.View):
             mentions = nextcord.AllowedMentions(everyone=False,users=True,roles=False)
             await general.send(f"Everyone welcome {interaction.user.mention} to the server!\nOur next heist will be in <#711435197807067156> :slight_smile:",allowed_mentions=mentions,delete_after=120)
         self.value = True
-
+'''
 class nppButton(nextcord.ui.View):
     def __init__(self):
         super().__init__(timeout=3600)
@@ -50,7 +50,7 @@ class nppButton(nextcord.ui.View):
         await interaction.user.add_roles(nppRole)
         await interaction.user.remove_roles(fphRole)
         self.value=True
-
+'''
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
@@ -124,7 +124,7 @@ async def on_member_ban(guild, user):
         embed.set_image("https://cdn.discordapp.com/attachments/710864896153354301/1003845313842401350/unknown.jpeg")
         general = bot.get_channel(710573789309698060)
         await general.send(embed=embed)
-
+'''
 @bot.event
 async def on_message(message):
     if message.channel.id == 711435574271279105:
@@ -134,6 +134,6 @@ async def on_message(message):
                 view = nppButton()
                 await message.channel.purge(limit=5,check=lambda m:m.author==bot.user)
                 await message.channel.send(embed=embed,view=view)
-
+'''
 
 bot.run(TOKEN)
