@@ -60,7 +60,7 @@ class Info(commands.Cog):
         embed.set_thumbnail(interaction.guild.icon.url)
         embed.set_footer(text=str(interaction.user),icon_url=interaction.user.display_avatar.url)
         if interaction.guild_id == 710573788856582225:
-            embed.add_field(name="Goal",value=f"`750` Members\n`{memberCount/750*100}%` complete")
+            embed.add_field(name="Goal",value=f"`750` Members\n`{round(memberCount/750*100,2)}%` complete")
         await interaction.response.send_message(embed=embed)
 
 
