@@ -38,7 +38,7 @@ class verifyButtons(nextcord.ui.View):
 
 class nppButton(nextcord.ui.View):
     def __init__(self):
-        super().__init__(timeout=3600)
+        super().__init__(timeout=10800)
         self.value = None
     
     @nextcord.ui.button(label="Don't ping me for partnerships!",style=nextcord.ButtonStyle.red,emoji="✖")
