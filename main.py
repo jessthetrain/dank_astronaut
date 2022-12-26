@@ -33,7 +33,7 @@ class verifyButtons(nextcord.ui.View):
             await interaction.response.send_message(ephemeral=True,content="You have been verfied!")
             general = bot.get_channel(710573789309698060)
             mentions = nextcord.AllowedMentions(everyone=False,users=True,roles=False)
-            await general.send(f"Everyone welcome {interaction.user.mention} to the server!\nOur next heist will be in <#1029109834248900799> :slight_smile:",allowed_mentions=mentions,delete_after=120)
+            await general.send(f"Everyone welcome {interaction.user.mention} to the server!\nOur next heist will be in <#711435197807067156> :slight_smile:",allowed_mentions=mentions,delete_after=120)
         self.value = True
 
 class nppButton(nextcord.ui.View):
